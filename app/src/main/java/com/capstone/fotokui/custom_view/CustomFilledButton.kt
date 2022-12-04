@@ -31,6 +31,7 @@ class CustomFilledButton : AppCompatButton {
         background = if(isEnabled) enabledBackground else disabledBackground
         setTextColor(txtColor)
         gravity = Gravity.CENTER
+        refreshDrawableState()
     }
     private fun init() {
         txtColor = ContextCompat.getColor(context, android.R.color.background_light)

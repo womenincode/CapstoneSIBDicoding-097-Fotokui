@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "580484931555",
+    "project_id": "fotokui",
+    "storage_bucket": "fotokui.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:580484931555:android:bca18b6a65b02d1aaacad6",
+        "android_client_info": {
+          "package_name": "com.capstone.fotokui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "580484931555-bumpkak91pnuh34mudcdgbb3v3cvk0pm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBtQjlz01JSQHUHusJ8ARKiN7NbkCXxx8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "580484931555-bumpkak91pnuh34mudcdgbb3v3cvk0pm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
