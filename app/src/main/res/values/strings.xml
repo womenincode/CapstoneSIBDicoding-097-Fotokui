@@ -19,4 +19,17 @@
     <string name="favorite">Favorite</string>
     <string name="your_description">Deskripsi*</string>
     <string name="your_promotion">Promo</string>
+    <string name="name">Nama</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="logo_fotokui">Logo FotoKui</string>
+    <string name="welcome_message">Selamat Datang</string>
+    <string name="register_description">Silahkan register untuk melanjutkan</string>
+    <string name="register_now">Daftar Sekarang</string>
+    <string name="choose_role">Pilih tipe</string>
+    <string name="login">Masuk</string>
+    <string name="already_have_account">Sudah memiliki akun ?</string>
+    <string name="login_description">Silahkan login untuk melanjutkan</string>
+    <string name="register">Daftar</string>
+    <string name="not_have_account">Belum memiliki akun ?</string>
 </resources>

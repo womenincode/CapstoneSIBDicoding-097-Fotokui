@@ -12,10 +12,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/logo"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/logo_fotokui" />
 
     <TextView
         android:id="@+id/tv_title"
@@ -23,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="SELAMAT DATANG"
+        android:text="@string/welcome_message"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,30 +36,52 @@
         android:textColor="@color/gray"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:text="Silahkan login untuk melanjutkan"
+        android:layout_marginTop="4dp"
+        android:textSize="14sp"
+        android:text="@string/login_description"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
-    <com.capstone.fotokui.custom_view.CustomEditText
-        android:id="@+id/edt_email"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_email"
+        style="@style/Widget.FotoKui.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="55dp"
         android:layout_marginTop="50dp"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
-        android:hint="Email/Username"
-        app:layout_constraintTop_toBottomOf="@id/iv_subtitle" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_subtitle">
 
-    <com.capstone.fotokui.custom_view.CustomEditText
-        android:id="@+id/edt_password"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_password"
+        style="@style/Widget.FotoKui.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="16dp"
+        android:hint="@string/password"
         android:inputType="textPassword"
-        android:hint="Password"
-        app:layout_constraintTop_toBottomOf="@id/edt_email" />
+        app:layout_constraintEnd_toEndOf="@+id/til_email"
+        app:layout_constraintStart_toStartOf="@+id/til_email"
+        app:layout_constraintTop_toBottomOf="@id/til_email"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -66,43 +89,49 @@
         android:layout_height="35dp"
         android:layout_marginTop="20dp"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/edt_password"
+        app:layout_constraintTop_toBottomOf="@+id/til_password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <com.capstone.fotokui.custom_view.CustomFilledButton
+    <Button
         android:id="@+id/btn_login"
+        style="@style/Widget.FotoKui.Button"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_marginTop="50dp"
-        style="@style/customTitle"
-        android:text="Masuk"
+        android:layout_marginTop="32dp"
+        android:text="@string/login"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/progress_bar"
-        />
+        app:layout_constraintEnd_toEndOf="@+id/til_password"
+        app:layout_constraintStart_toStartOf="@+id/til_password"
+        app:layout_constraintTop_toBottomOf="@id/progress_bar" />
 
     <LinearLayout
         android:id="@+id/footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="14dp"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/btn_login"
+        app:layout_constraintStart_toStartOf="@+id/btn_login"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Don't have an account?"
-            android:layout_marginEnd="5dp"/>
+            android:layout_marginEnd="5dp"
+            android:text="@string/not_have_account" />
 
         <TextView
             android:id="@+id/btn_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Register"
+            android:padding="4dp"
+            android:textStyle="bold"
+            android:text="@string/register"
             android:clickable="true"
-            android:textColor="@color/primary" />
+            android:textColor="@color/primary"
+            android:focusable="true" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
