@@ -17,4 +17,6 @@
     <string name="zero">0</string>
     <string name="like_this_photographer">Suka photographer ini</string>
     <string name="favorite">Favorite</string>
+    <string name="your_description">Deskripsi*</string>
+    <string name="your_promotion">Promo</string>
 </resources>

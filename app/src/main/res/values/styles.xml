@@ -2,7 +2,6 @@
 <resources>
 
     <!--  Font  -->
-
     <style name="customHeader" parent="@android:style/TextAppearance">
         <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">32sp</item>

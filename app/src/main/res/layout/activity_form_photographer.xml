@@ -61,7 +61,7 @@
                     style="@style/cardSubtitleStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="26dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginStart="32dp"
                     android:text="@string/your_experience"
                     app:layout_constraintStart_toStartOf="parent"
@@ -132,10 +132,39 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:hintEnabled="false"
-                    app:prefixText="Rp."
+                    app:prefixText="Rp"
                     app:layout_constraintEnd_toEndOf="@+id/til_year_or_month"
                     app:layout_constraintStart_toStartOf="@+id/til_experience"
                     app:layout_constraintTop_toBottomOf="@+id/tv_photographer_price">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero"
+                        android:inputType="number|numberDecimal" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tv_photographer_promotion"
+                    style="@style/cardSubtitleStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="32dp"
+                    android:text="@string/your_promotion"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/til_price" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_promotion"
+                    style="@style/Widget.FotoKui.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:hintEnabled="false"
+                    app:suffixText="%"
+                    app:layout_constraintEnd_toEndOf="@+id/til_year_or_month"
+                    app:layout_constraintStart_toStartOf="@+id/til_experience"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_photographer_promotion">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
@@ -150,9 +179,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="@string/description"
+                    android:text="@string/your_description"
                     app:layout_constraintStart_toStartOf="@+id/tv_photographer_price"
-                    app:layout_constraintTop_toBottomOf="@+id/til_price" />
+                    app:layout_constraintTop_toBottomOf="@+id/til_promotion" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_description"
