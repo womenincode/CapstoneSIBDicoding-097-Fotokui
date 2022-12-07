@@ -25,14 +25,13 @@ class LoginActivity : AppCompatActivity() {
 
         binding.btnLogin.setOnClickListener {
             authViewModel.login(
-                email = binding.edtEmail.text.toString().trim(),
-                password = binding.edtPassword.text.toString().trim()
+                email = binding.tietEmail.text.toString().trim(),
+                password = binding.tietPassword.text.toString().trim()
             )
         }
 
         binding.btnRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
-            finish()
         }
 
         authViewModel.loginLiveData.observe(this){

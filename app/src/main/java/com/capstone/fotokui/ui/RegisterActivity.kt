@@ -1,17 +1,14 @@
 package com.capstone.fotokui.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
-import com.capstone.fotokui.R
+import androidx.appcompat.app.AppCompatActivity
 import com.capstone.fotokui.databinding.ActivityRegisterBinding
 import com.capstone.fotokui.utils.ResponseResult
 import com.capstone.fotokui.view_model.AuthViewModel
-import com.google.android.gms.common.api.Response
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,9 +28,9 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.btnRegister.setOnClickListener {
             authViewModel.register(
-                name = binding.edtName.text.toString().trim(),
-                email = binding.edtEmail.text.toString().trim(),
-                password = binding.edtPassword.text.toString().trim()
+                name = binding.tietName.text.toString().trim(),
+                email = binding.tietEmail.text.toString().trim(),
+                password = binding.tietPassword.text.toString().trim()
             )
         }
 
