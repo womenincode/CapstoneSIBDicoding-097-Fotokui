@@ -1,11 +1,11 @@
 package com.capstone.fotokui
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.capstone.fotokui.databinding.ActivityMainBinding
-import com.capstone.fotokui.ui.LoginActivity
 import com.capstone.fotokui.view_model.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,9 +20,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnLogout.setOnClickListener {
-            authViewModel.logout()
-            startActivity(Intent(this, LoginActivity::class.java))
-        }
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+
+        binding.bnvHome.setupWithNavController(navController)
+
     }
 }
