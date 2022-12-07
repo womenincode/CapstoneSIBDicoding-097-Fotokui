@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  Font  -->
+
+    <style name="customHeader" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+    <style name="customSubHeader" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textSize">27sp</item>
+    </style>
+
+    <style name="customTitle" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+    <style name="customSubtitle" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">21sp</item>
+    </style>
+
+    <style name="customDescription" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">19sp</item>
+    </style>
+
+    <style name="titleHeader" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="titleStyle" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="subtitleStyle" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="body1Style" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+    <style name="smallTextStyle" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">9sp</item>
+    </style>
+
+    <style name="cardTitleStyle" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="cardSubtitleStyle" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="bodyStyle" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">#FF474747</item>
+    </style>
+
+
+    <!--  Button  -->
+    <style name="Widget.FotoKui.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:textAppearance">@style/TextAppearance.FotoKui.Button</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.FotoKui.SmallComponent</item>
+        <item name="android:height">43dp</item>
+    </style>
+    <style name="Widget.FotoKui.Button.OutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textAppearance">@style/TextAppearance.FotoKui.Button</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.FotoKui.SmallComponent</item>
+        <item name="android:height">43dp</item>
+    </style>
+
+    <style name="TextAppearance.FotoKui.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/poppins_semibold</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+    </style>
+    <style name="ShapeAppearance.FotoKui.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">25dp</item>
+    </style>
+
+    <!--  TextFields  -->
+    <style name="Widget.FotoKui.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="shapeAppearance">@style/ShapeAppearance.FotoKui.SmallComponent</item>
+        <item name="android:height">43dp</item>
+        <item name="boxBackgroundColor">#FFF8F8F8</item>
+    </style>
+    <style name="Widget.FotoKui.TextInputLayout.OutlinedBox.ExposedDropdownMenu" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="shapeAppearance">@style/ShapeAppearance.FotoKui.SmallComponent</item>
+        <item name="android:height">43dp</item>
+        <item name="boxBackgroundColor">#FFF8F8F8</item>
+    </style>
+</resources>

@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">FotoKui</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="find_photographer">Find Photographer</string>
+    <string name="profile">Profile</string>
+    <string name="my_activities">Aktivitas saya</string>
+    <string name="photos">Photos</string>
+    <string name="chat_now">Chat sekarang</string>
+    <string name="description">Deskripsi</string>
+    <string name="cancel">Batal</string>
+    <string name="save">Simpan</string>
+    <string name="photographer_service">JASA FOTOGRAFER</string>
+    <string name="your_experience">Pengalaman anda*</string>
+    <string name="year_or_month">MM/YY</string>
+    <string name="your_price">Harga*</string>
+    <string name="zero">0</string>
 </resources>
