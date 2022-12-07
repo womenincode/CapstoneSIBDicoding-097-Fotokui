@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_navigation"
+    app:startDestination="@id/findPhotographerFragment">
+
+    <fragment
+        android:id="@+id/findPhotographerFragment"
+        android:name="com.capstone.fotokui.ui.FindPhotographerFragment"
+        android:label="fragment_find_photographer"
+        tools:layout="@layout/fragment_find_photographer" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.capstone.fotokui.ui.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <activity
+        android:id="@+id/detailPhotographerActivity"
+        android:name="com.capstone.fotokui.ui.DetailPhotographerActivity"
+        android:label="activity_detail_photographer"
+        tools:layout="@layout/activity_detail_photographer" />
+    <activity
+        android:id="@+id/formPhotographerActivity"
+        android:name="com.capstone.fotokui.ui.FormPhotographerActivity"
+        android:label="activity_form_photographer"
+        tools:layout="@layout/activity_form_photographer" />
+</navigation>
