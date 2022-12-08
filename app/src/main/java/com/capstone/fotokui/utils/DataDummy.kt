@@ -16,4 +16,8 @@ object DataDummy {
             )
         }
     }
+
+    fun generatePhotographerPromos(): List<Photographer> {
+        return generatePhotographers(20).filter { photographer -> photographer.promo > 0 }
+    }
 }

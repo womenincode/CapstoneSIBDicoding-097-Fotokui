@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.capstone.fotokui.databinding.FragmentHomeBinding
+import com.capstone.fotokui.utils.DataDummy
 
 class HomeFragment : Fragment() {
 
@@ -27,7 +28,9 @@ class HomeFragment : Fragment() {
 
         epoxyHomeController = EpoxyHomeController()
 
-        binding.epoxyHome.setControllerAndBuildModels(epoxyHomeController)
+        binding.epoxyHome.setController(epoxyHomeController)
+
+        epoxyHomeController.setData(DataDummy.generatePhotographerPromos())
     }
 
     override fun onDestroyView() {
