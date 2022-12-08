@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace 'com.capstone.fotokui'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.capstone.fotokui"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -33,21 +33,25 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
     buildFeatures {
+        dataBinding true
         viewBinding true
     }
 }
 
+kapt {
+    correctErrorTypes = true
+}
+
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    implementation 'androidx.activity:activity-ktx:1.5.1'
-    implementation "androidx.fragment:fragment-ktx:1.5.3"
+    implementation 'androidx.activity:activity-ktx:1.6.1'
+    implementation "androidx.fragment:fragment-ktx:1.5.4"
 
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
 
@@ -55,9 +59,12 @@ dependencies {
     implementation "com.google.dagger:hilt-android:2.44"
     kapt "com.google.dagger:hilt-compiler:2.44"
 
-
     implementation "androidx.navigation:navigation-fragment-ktx:2.5.3"
     implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
+
+    implementation 'com.airbnb.android:epoxy:5.1.1'
+    implementation 'com.airbnb.android:epoxy-databinding:5.1.1'
+    kapt 'com.airbnb.android:epoxy-processor:5.1.1'
 
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.makeramen:roundedimageview:2.3.0'
