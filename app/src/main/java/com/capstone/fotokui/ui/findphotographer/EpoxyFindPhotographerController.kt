@@ -22,9 +22,16 @@ class EpoxyFindPhotographerController(private val context: Context) : TypedEpoxy
             title(title)
         }
         data?.forEach { photographer ->
-            photographer {
-                id(photographer.id)
-                photographer(photographer)
+            if (photographer.promo > 0) {
+                photographerPromo {
+                    id(photographer.id)
+                    photographer(photographer)
+                }
+            } else {
+                photographer {
+                    id(photographer.id)
+                    photographer(photographer)
+                }
             }
         }
     }

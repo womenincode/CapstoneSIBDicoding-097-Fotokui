@@ -1,12 +1,13 @@
 package com.capstone.fotokui.ui.home
 
-import com.airbnb.epoxy.EpoxyController
+import com.airbnb.epoxy.TypedEpoxyController
+import com.capstone.fotokui.domain.Photographer
 import com.capstone.fotokui.homeHeader
 import com.capstone.fotokui.homeMenu
 import com.capstone.fotokui.homePromotionTitle
 
-class EpoxyHomeController : EpoxyController() {
-    override fun buildModels() {
+class EpoxyHomeController : TypedEpoxyController<List<Photographer>>() {
+    override fun buildModels(data: List<Photographer>?) {
         homeHeader {
             id("home header")
         }
@@ -16,5 +17,6 @@ class EpoxyHomeController : EpoxyController() {
         homePromotionTitle {
             id("home promotion title")
         }
+
     }
 }
