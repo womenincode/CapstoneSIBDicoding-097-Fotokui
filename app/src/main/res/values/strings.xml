@@ -43,5 +43,8 @@
     <string name="nearby_photographer">FOTOGRAFER TERDEKAT</string>
     <string name="favorite_photographer">FOTOGRAFER FAVORIT</string>
 
+    <string name="favorite_photographer_title">Fotographer Favorit</string>
+
     <string name="photographer_experience_format">%s %s</string>
+    <string name="logout">Keluar</string>
 </resources>
