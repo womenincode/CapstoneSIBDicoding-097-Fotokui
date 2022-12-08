@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="name"
-            type="String" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -69,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/find_your_location"
                 android:padding="8dp"
-                android:drawableEnd="@drawable/ic_location"
+                android:drawableEnd="@drawable/ic_search_location"
                 android:enabled="false" />
         </com.google.android.material.textfield.TextInputLayout>
 

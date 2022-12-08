@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="title"
+            type="String" />
+    </data>
+
+    <com.google.android.material.appbar.MaterialToolbar
+        style="Widget.MaterialComponents.Toolbar.Surface"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:padding="32dp"
+        app:title="@{title}"
+        app:titleTextAppearance="@style/titleHeader"
+        app:titleCentered="true"
+        tools:title="Temukan Fotografer"/>
+</layout>

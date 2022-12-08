@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/findPhotographerFragment">
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.capstone.fotokui.ui.home.HomeFragment"
@@ -11,7 +11,7 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/findPhotographerFragment"
-        android:name="com.capstone.fotokui.ui.FindPhotographerFragment"
+        android:name="com.capstone.fotokui.ui.findphotographer.FindPhotographerFragment"
         android:label="fragment_find_photographer"
         tools:layout="@layout/fragment_find_photographer" />
     <fragment

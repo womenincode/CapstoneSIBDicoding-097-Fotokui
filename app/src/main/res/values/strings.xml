@@ -39,4 +39,8 @@
     <string name="help">Bantuan</string>
     <string name="promo_today">PROMO HARI INI</string>
     <string name="see_other">Lainnya</string>
+    <string name="search_from_maps">Cari melalui maps</string>
+    <string name="nearby_photographer">FOTOGRAFER TERDEKAT</string>
+    
+    <string name="photographer_experience_format">%s %s</string>
 </resources>
