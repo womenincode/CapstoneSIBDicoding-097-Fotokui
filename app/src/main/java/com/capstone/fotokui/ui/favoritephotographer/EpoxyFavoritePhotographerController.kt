@@ -8,9 +8,10 @@ import com.capstone.fotokui.domain.Photographer
 
 class EpoxyFavoritePhotographerController(private val context: Context) : TypedEpoxyController<List<Photographer>>() {
     override fun buildModels(data: List<Photographer>?) {
+        val titleToolbar = context.getString(R.string.favorite_photographer_title)
         toolbar {
             id("toolbar_favorite_photographer")
-            title("Temukan Fotografer")
+            title(titleToolbar)
         }
         findPhotographerSearchInput {
             id("search_favorite_photographer")
