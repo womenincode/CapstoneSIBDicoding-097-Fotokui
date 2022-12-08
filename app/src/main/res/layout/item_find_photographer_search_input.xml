@@ -23,8 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/search_from_maps"
-            android:padding="8dp"
-            android:drawableEnd="@drawable/ic_search_location"
+            android:padding="16dp"
             android:enabled="false" />
 
     </com.google.android.material.textfield.TextInputLayout>
