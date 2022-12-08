@@ -1,11 +1,11 @@
 package com.capstone.fotokui.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.capstone.fotokui.MainActivity
 import com.capstone.fotokui.databinding.ActivityLoginBinding
 import com.capstone.fotokui.utils.ResponseResult

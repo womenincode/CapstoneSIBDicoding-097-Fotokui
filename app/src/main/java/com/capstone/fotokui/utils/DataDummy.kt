@@ -12,12 +12,17 @@ object DataDummy {
                 experience = "1.$id",
                 yearOrMonthExperience = if (id % 3 == 0) "Tahun" else "Bulan",
                 price = 50,
+                isFavorite = id % 4 == 0 || id % 3 == 0,
                 promo = if (id % 4 == 0) 4F else 0.0F
             )
-        }
+        }.shuffled()
     }
 
-    fun generatePhotographerPromos(): List<Photographer> {
-        return generatePhotographers(20).filter { photographer -> photographer.promo > 0 }
+    fun generatePhotographerPromos(size: Int = 20): List<Photographer> {
+        return generatePhotographers(size).filter { photographer -> photographer.promo > 0 }
+    }
+
+    fun generateFavoritePhotographer(size: Int = 20): List<Photographer> {
+        return generatePhotographers(size).filter { photographer -> photographer.isFavorite }
     }
 }

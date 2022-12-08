@@ -30,7 +30,7 @@ class FindPhotographerFragment : Fragment() {
 
         binding.epoxyFindPhotographer.setController(epoxyFindPhotographerController)
 
-        epoxyFindPhotographerController.setData(DataDummy.generatePhotographers(20))
+        epoxyFindPhotographerController.setData(DataDummy.generatePhotographers(30))
     }
 
     override fun onDestroyView() {

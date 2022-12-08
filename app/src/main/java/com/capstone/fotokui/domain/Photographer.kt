@@ -8,6 +8,7 @@ data class Photographer(
     val yearOrMonthExperience: String,
     val price: Long,
     val promo: Float,
+    val isFavorite: Boolean,
     val lat: Double = 0.0,
     val lon: Double = 0.0,
 )

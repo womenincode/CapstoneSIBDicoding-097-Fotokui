@@ -30,7 +30,7 @@ class HomeFragment : Fragment() {
 
         binding.epoxyHome.setController(epoxyHomeController)
 
-        epoxyHomeController.setData(DataDummy.generatePhotographerPromos())
+        epoxyHomeController.setData(DataDummy.generatePhotographerPromos(30))
     }
 
     override fun onDestroyView() {

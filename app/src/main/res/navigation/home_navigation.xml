@@ -15,6 +15,11 @@
         android:label="fragment_find_photographer"
         tools:layout="@layout/fragment_find_photographer" />
     <fragment
+        android:id="@+id/favoritePhotographerFragment"
+        android:name="com.capstone.fotokui.ui.favoritephotographer.FavoritePhotographerFragment"
+        android:label="fragment_favorite_photographer"
+        tools:layout="@layout/fragment_favorite_photographer" />
+    <fragment
         android:id="@+id/profileFragment"
         android:name="com.capstone.fotokui.ui.ProfileFragment"
         android:label="fragment_profile"

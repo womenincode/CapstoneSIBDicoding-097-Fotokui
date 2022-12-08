@@ -114,9 +114,10 @@
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/like_this_photographer"
                     android:layout_marginTop="8dp"
-                    android:src="@drawable/ic_like"
+                    android:src="@{photographer.favorite ? @drawable/ic_favorited : @drawable/ic_like}"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_photographer_distance" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_photographer_distance"
+                    tools:src="@drawable/ic_like" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
