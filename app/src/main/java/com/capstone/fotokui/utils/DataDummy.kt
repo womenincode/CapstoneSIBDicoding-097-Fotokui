@@ -8,10 +8,13 @@ object DataDummy {
             Photographer(
                 id = "photographer $id",
                 photo = "https://cdn.lorem.space/images/face/.cache/150x150/jurica-koletic-7YVZYZeITc8-unsplash.jpg",
+                email = "laylael@gmail.com",
                 name = "Layla El Faouly",
                 experience = "1.$id",
                 yearOrMonthExperience = if (id % 3 == 0) "Tahun" else "Bulan",
                 price = 50,
+                description= "You can configure your app to draw its content behind the system bars. Together, the status bar and the navigation bar are called the system bars.",
+                photos = emptyList(),
                 isFavorite = id % 4 == 0 || id % 3 == 0,
                 promo = if (id % 4 == 0) 4F else 0.0F
             )

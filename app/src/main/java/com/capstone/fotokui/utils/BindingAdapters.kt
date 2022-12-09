@@ -9,7 +9,7 @@ import de.hdodenhof.circleimageview.CircleImageView
 @BindingAdapter("imageUrl", "placeholder", "error")
 fun loadImages(
     circleImageView: CircleImageView,
-    url: String,
+    url: String?,
     placeholder: Drawable?,
     error: Drawable?
 ) {
