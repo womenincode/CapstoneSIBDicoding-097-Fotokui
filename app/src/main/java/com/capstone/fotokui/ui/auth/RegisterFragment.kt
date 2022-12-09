@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -34,6 +35,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupView()
         setupListener()
         setupObserver()
     }
@@ -43,6 +45,12 @@ class RegisterFragment : Fragment(), View.OnClickListener {
             R.id.btn_register -> register()
             R.id.btn_login -> navigateToLoginScreen()
         }
+    }
+
+    private fun setupView() {
+        val roles = listOf(getString(R.string.user), getString(R.string.photographer))
+        val adapter = ArrayAdapter(requireContext(), R.layout.item_user_role, roles)
+        binding.actvRole.setAdapter(adapter)
     }
 
     private fun setupListener() {
@@ -56,10 +64,9 @@ class RegisterFragment : Fragment(), View.OnClickListener {
                 is Response.Success -> {
                     binding.btnLogin.isEnabled = true
                     awesomeDialog.title("Registrasi berhasil")
-                        .body("Akun ${response.result.displayName} berhasil dibuat!")
+                        .body("Akun ${response.result.email} berhasil dibuat!")
                         .icon(R.drawable.ic_success)
-                        .onPositive(getString(R.string.ok)) {
-                            awesomeDialog.cancel()
+                        .onPositive(getString(R.string.ok), buttonBackgroundColor = R.drawable.filled_custom_button) {
                             navigateToLoginScreen()
                         }
                         .show()
@@ -86,13 +93,18 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         if (!validateForm()) return
         val name = binding.tietName.text.toString()
         val email = binding.tietEmail.text.toString()
+        val role = binding.actvRole.text.toString()
         val password = binding.tietPassword.text.toString()
-        authViewModel.register(name, email, password)
+        authViewModel.register(name, email, role, password)
     }
 
     private fun validateForm(): Boolean {
         if (binding.tietName.text?.isEmpty() == true) {
             binding.tilName.error = getString(R.string.name_empty)
+            return false
+        }
+        if (binding.actvRole.text?.isEmpty() == true) {
+            binding.actvRole.error = getString(R.string.role_empty)
             return false
         }
         if (binding.tietEmail.text?.isEmpty() == true) {

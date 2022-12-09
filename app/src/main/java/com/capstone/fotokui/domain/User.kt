@@ -6,6 +6,6 @@ data class User(
     val name: String,
     val email: String,
     val role: String,
-    val lat: Double,
-    val lon: Double
+    val lat: Double = 0.0,
+    val lon: Double = 0.0
 )

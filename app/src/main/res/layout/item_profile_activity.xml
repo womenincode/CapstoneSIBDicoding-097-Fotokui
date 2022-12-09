@@ -7,12 +7,18 @@
         <variable
             name="profileActivity"
             type="com.capstone.fotokui.domain.ProfileActivity" />
+        <variable
+            name="onClick"
+            type="com.capstone.fotokui.ui.profile.EpoxyProfileController.OnProfileActivityListener" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{() -> onClick.onClick(profileActivity)}">
 
         <TextView
             style="@style/body1Style"

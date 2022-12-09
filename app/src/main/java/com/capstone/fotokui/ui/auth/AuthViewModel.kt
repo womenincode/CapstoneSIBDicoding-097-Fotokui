@@ -35,8 +35,8 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    fun register(name : String, email:String, password: String) = viewModelScope.launch {
-        authRepository.register(name, email, password).collect { response ->
+    fun register(name : String, email:String, role: String, password: String) = viewModelScope.launch {
+        authRepository.register(name, email, role, password).collect { response ->
             _registerLiveData.value = response
             delay(500)
             _registerLiveData.value = null

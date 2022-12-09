@@ -23,7 +23,6 @@ class HomeFragment : Fragment() {
 
     private lateinit var epoxyHomeController: EpoxyHomeController
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

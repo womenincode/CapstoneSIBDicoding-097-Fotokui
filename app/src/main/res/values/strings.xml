@@ -60,4 +60,8 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="ok">Ok</string>
     <string name="name_empty">Nama tidak boleh kosong!</string>
+    <string name="logout_title">Apakah anda yakin ingin keluar?</string>
+    <string name="user">Pengguna</string>
+    <string name="photographer">Fotografer</string>
+    <string name="role_empty">Tipe pengguna tidak boleh kosong!</string>
 </resources>
