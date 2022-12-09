@@ -8,8 +8,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.fotokui.MainActivity
 import com.capstone.fotokui.databinding.ActivityLoginBinding
-import com.capstone.fotokui.utils.ResponseResult
-import com.capstone.fotokui.view_model.AuthViewModel
+import com.capstone.fotokui.domain.Response
+import com.capstone.fotokui.ui.auth.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -36,15 +36,15 @@ class LoginActivity : AppCompatActivity() {
 
         authViewModel.loginLiveData.observe(this){
             when(it){
-                is ResponseResult.Success -> {
+                is Response.Success -> {
                     binding.progressBar.visibility = View.GONE
                     startActivity(Intent(this, MainActivity::class.java))
                 }
-                is ResponseResult.Failure -> {
+                is Response.Failure -> {
                     binding.progressBar.visibility = View.GONE
-                    showToast(it.exception.message.toString())
+                    showToast(it.message)
                 }
-                is ResponseResult.Loading -> {
+                is Response.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
                 }
                 else -> {}

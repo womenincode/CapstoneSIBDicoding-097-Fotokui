@@ -24,5 +24,11 @@
         <!-- Optional: set the status bar light and content dark. -->
 
     </style>
+    <style name="Theme.FotoKui.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.FotoKui.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.FotoKui.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

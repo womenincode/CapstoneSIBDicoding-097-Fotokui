@@ -16,6 +16,13 @@
         android:theme="@style/Theme.FotoKui"
         tools:targetApi="31">
         <activity
+            android:name=".ui.auth.AuthActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.RegisterActivity"
             android:exported="false" />
         <activity
@@ -27,13 +34,14 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.FotoKui.FullScreen"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.FotoKui.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -52,7 +60,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
     </application>
 
 </manifest>

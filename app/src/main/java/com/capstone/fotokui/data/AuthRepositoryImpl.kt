@@ -1,26 +1,29 @@
-package com.capstone.fotokui.repository
+package com.capstone.fotokui.data
 
-import com.capstone.fotokui.utils.ResponseResult
-import com.capstone.fotokui.utils.await
+import com.capstone.fotokui.domain.Response
+import com.capstone.fotokui.domain.repository.AuthRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth
 ) : AuthRepository {
 
-    override val currentUser: FirebaseUser?
-    get() = firebaseAuth.currentUser
+    override val currentUser get() = firebaseAuth.currentUser
 
-    override suspend fun login(email: String, password: String): ResponseResult<FirebaseUser> {
-        return try {
+    override suspend fun login(email: String, password: String): Flow<Response<FirebaseUser>> = flow {
+        emit(Response.Loading)
+        try {
             val result = firebaseAuth.signInWithEmailAndPassword(email, password).await()
-            ResponseResult.Success(result.user!!)
+            emit(Response.Success(result.user!!))
         } catch (e: Exception){
             e.printStackTrace()
-            ResponseResult.Failure(e)
+            emit(Response.Failure(e.localizedMessage as String))
         }
     }
 
@@ -28,16 +31,18 @@ class AuthRepositoryImpl @Inject constructor(
         name: String,
         email: String,
         password: String
-    ): ResponseResult<FirebaseUser> {
-        return try {
+    ): Flow<Response<FirebaseUser>> = flow {
+        emit(Response.Loading)
+        try {
             val result = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
             result?.user?.updateProfile(UserProfileChangeRequest.Builder().setDisplayName(name).build())
-            ResponseResult.Success(result.user!!)
+            emit(Response.Success(result.user!!))
         } catch (e: Exception) {
             e.printStackTrace()
-            ResponseResult.Failure(e)
+            emit(Response.Failure(e.localizedMessage as String))
         }
     }
+
     override fun logout() {
         firebaseAuth.signOut()
     }

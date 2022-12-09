@@ -1,7 +1,7 @@
-package com.capstone.fotokui.di
+package com.capstone.fotokui.data.di
 
-import com.capstone.fotokui.repository.AuthRepository
-import com.capstone.fotokui.repository.AuthRepositoryImpl
+import com.capstone.fotokui.data.AuthRepositoryImpl
+import com.capstone.fotokui.domain.repository.AuthRepository
 import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides
@@ -10,7 +10,7 @@ import dagger.hilt.components.SingletonComponent
 
 @InstallIn(SingletonComponent::class)
 @Module
-class AppModule {
+class NetworkModule {
 
     @Provides
     fun providerFirebaseAuth(): FirebaseAuth = FirebaseAuth.getInstance()

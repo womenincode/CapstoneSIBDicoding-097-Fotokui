@@ -8,7 +8,13 @@
         android:id="@+id/homeFragment"
         android:name="com.capstone.fotokui.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_navigation_auth"
+            app:destination="@id/navigation_auth"
+            app:popUpTo="@id/navigation_auth"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/findPhotographerFragment"
         android:name="com.capstone.fotokui.ui.findphotographer.FindPhotographerFragment"
@@ -34,4 +40,5 @@
         android:name="com.capstone.fotokui.ui.FormPhotographerActivity"
         android:label="activity_form_photographer"
         tools:layout="@layout/activity_form_photographer" />
+    <include app:graph="@navigation/navigation_auth" />
 </navigation>
