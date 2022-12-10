@@ -82,13 +82,13 @@ class FormPhotographerActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setupFormPhotographer(photographer: Photographer) {
-        binding.tietExperience.setText(photographer.experience.toString())
-        binding.actvMonthOrYear.setText(photographer.yearOrMonthExperience.toString())
-        binding.tietPrice.setText(photographer.price.toString())
-        binding.tietPromotion.setText(photographer.promo.toString())
-        binding.tietPhone.setText(photographer.phone.toString())
-        binding.tietDescription.setText(photographer.description.toString())
-        binding.tietLocation.setText(photographer.location.toString())
+        photographer.experience?.let { binding.tietExperience.setText(it.toString()) }
+        photographer.yearOrMonthExperience?.let { binding.actvMonthOrYear.setText(it) }
+        photographer.price?.let { binding.tietPrice.setText(it.toString()) }
+        photographer.promo?.let { binding.tietPromotion.setText(it.toString()) }
+        photographer.phone?.let { binding.tietPhone.setText(it) }
+        photographer.description?.let { binding.tietDescription.setText(it) }
+        photographer.location?.let { binding.tietLocation.setText(it) }
     }
 
     private fun observeFormPhotographerState() {

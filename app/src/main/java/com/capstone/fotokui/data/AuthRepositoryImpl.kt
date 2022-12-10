@@ -1,5 +1,6 @@
 package com.capstone.fotokui.data
 
+import com.capstone.fotokui.domain.Photographer
 import com.capstone.fotokui.domain.Response
 import com.capstone.fotokui.domain.Role
 import com.capstone.fotokui.domain.User
@@ -69,7 +70,9 @@ class AuthRepositoryImpl @Inject constructor(
             result?.user?.updateProfile(profileUpdates)?.await()
             val registeredUser = result.user
             createUser(registeredUser, role)
-            if (role == Role.PENGGUNA) {
+            if (role == Role.FOTOGRAFER) {
+                createPhotographer(registeredUser?.uid.toString())
+            } else {
                 firebaseAuth.signOut()
             }
             emit(Response.Success(registeredUser!!))
@@ -88,6 +91,13 @@ class AuthRepositoryImpl @Inject constructor(
             role = role.name
         )
         firebaseFirestore.collection("users").document(user.id.toString()).set(user).await()
+    }
+
+    private suspend fun createPhotographer(uid: String) {
+        val photographer = Photographer(
+            id = uid
+        )
+        firebaseFirestore.collection("photographers").document(uid).set(photographer).await()
     }
 
     override fun logout() {
