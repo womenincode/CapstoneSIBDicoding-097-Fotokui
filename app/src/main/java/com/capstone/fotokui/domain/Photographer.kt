@@ -12,6 +12,6 @@ data class Photographer(
     val description: String,
     val photos: List<String>,
     val isFavorite: Boolean,
-    val lat: Double = 0.0,
-    val lon: Double = 0.0,
+    val lat: Double? = null,
+    val lon: Double? = null,
 )

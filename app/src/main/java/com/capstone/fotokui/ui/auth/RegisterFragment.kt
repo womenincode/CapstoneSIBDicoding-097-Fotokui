@@ -1,5 +1,6 @@
 package com.capstone.fotokui.ui.auth
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,8 @@ import androidx.navigation.fragment.findNavController
 import com.capstone.fotokui.R
 import com.capstone.fotokui.databinding.FragmentRegisterBinding
 import com.capstone.fotokui.domain.Response
+import com.capstone.fotokui.domain.Role
+import com.capstone.fotokui.ui.formphotographer.FormPhotographerActivity
 import com.example.awesomedialog.*
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -35,7 +38,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupView()
+        setupRoleAutoCompleteTextView()
         setupListener()
         setupObserver()
     }
@@ -47,9 +50,9 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    private fun setupView() {
-        val roles = listOf(getString(R.string.user), getString(R.string.photographer))
-        val adapter = ArrayAdapter(requireContext(), R.layout.item_user_role, roles)
+    private fun setupRoleAutoCompleteTextView() {
+        val roles = Role.values().map { role -> role.type }
+        val adapter = ArrayAdapter(requireContext(), R.layout.item_base_auto_complete_textview, roles)
         binding.actvRole.setAdapter(adapter)
     }
 
@@ -67,7 +70,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
                         .body("Akun ${response.result.email} berhasil dibuat!")
                         .icon(R.drawable.ic_success)
                         .onPositive(getString(R.string.ok), buttonBackgroundColor = R.drawable.filled_custom_button) {
-                            navigateToLoginScreen()
+                            navigateToNextScreen()
                         }
                         .show()
                 }
@@ -93,7 +96,8 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         if (!validateForm()) return
         val name = binding.tietName.text.toString()
         val email = binding.tietEmail.text.toString()
-        val role = binding.actvRole.text.toString()
+        val roleText = binding.actvRole.text.toString()
+        val role = Role.valueOf(roleText.uppercase())
         val password = binding.tietPassword.text.toString()
         authViewModel.register(name, email, role, password)
     }
@@ -118,8 +122,22 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         return true
     }
 
+    private fun navigateToNextScreen() {
+        val roleText = binding.actvRole.text.toString()
+        when (Role.valueOf(roleText.uppercase())) {
+            Role.PENGGUNA -> navigateToLoginScreen()
+            Role.FOTOGRAFER -> navigateToFormPhotographer()
+        }
+    }
+
     private fun navigateToLoginScreen() {
         findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment())
+    }
+
+    private fun navigateToFormPhotographer() {
+        val formPhotographerIntent = Intent(activity, FormPhotographerActivity::class.java)
+        startActivity(formPhotographerIntent)
+        activity?.finish()
     }
 
     override fun onDestroyView() {

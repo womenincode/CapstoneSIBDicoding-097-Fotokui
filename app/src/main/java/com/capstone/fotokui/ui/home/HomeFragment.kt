@@ -10,7 +10,6 @@ import androidx.fragment.app.viewModels
 import com.capstone.fotokui.databinding.FragmentHomeBinding
 import com.capstone.fotokui.ui.auth.AuthActivity
 import com.capstone.fotokui.ui.auth.AuthViewModel
-import com.capstone.fotokui.utils.DataDummy
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,6 +19,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val authViewModel: AuthViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by viewModels()
 
     private lateinit var epoxyHomeController: EpoxyHomeController
 
@@ -38,11 +38,21 @@ class HomeFragment : Fragment() {
             navigateToAuthScreen()
         }
 
+        if (savedInstanceState == null) {
+            homeViewModel.getCurrentUser()
+        }
+
         epoxyHomeController = EpoxyHomeController()
 
         binding.epoxyHome.setController(epoxyHomeController)
 
-        epoxyHomeController.setData(DataDummy.generatePhotographerPromos(30))
+        observeHomeScreenUiState()
+    }
+
+    private fun observeHomeScreenUiState() {
+        homeViewModel.homeScreenUiState.observe(viewLifecycleOwner) { homeScreenUiState ->
+            epoxyHomeController.setData(homeScreenUiState)
+        }
     }
 
     private fun navigateToAuthScreen() {

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.capstone.fotokui.domain.Response
+import com.capstone.fotokui.domain.Role
 import com.capstone.fotokui.domain.repository.AuthRepository
 import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -35,7 +36,7 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    fun register(name : String, email:String, role: String, password: String) = viewModelScope.launch {
+    fun register(name : String, email:String, role: Role, password: String) = viewModelScope.launch {
         authRepository.register(name, email, role, password).collect { response ->
             _registerLiveData.value = response
             delay(500)

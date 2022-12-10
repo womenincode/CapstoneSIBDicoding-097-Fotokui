@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="user"
+            type="com.google.firebase.auth.FirebaseUser" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,12 +20,15 @@
             android:id="@+id/iv_user_photo"
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:src="@drawable/dummy_user"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="44dp"
             android:layout_marginEnd="16dp"
             android:scaleType="centerCrop"
+            app:imageUrl="@{user.photoUrl.toString()}"
+            app:placeholder="@{@drawable/ic_profile_placeholder}"
+            app:error="@{@drawable/ic_profile_error}"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:src="@drawable/dummy_user" />
 
         <TextView
             style="@style/titleHeader"
@@ -31,10 +37,11 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:layout_marginStart="16dp"
+            app:setupWelcomeMessage="@{user.displayName}"
             app:layout_constraintEnd_toStartOf="@+id/iv_user_photo"
             app:layout_constraintTop_toTopOf="@id/iv_user_photo"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="Halo, Amita" />
+            tools:text="Halo, Amita" />
 
         <TextView
             style="@style/cardSubtitleStyle"

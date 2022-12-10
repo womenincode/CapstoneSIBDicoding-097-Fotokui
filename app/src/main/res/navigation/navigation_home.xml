@@ -37,7 +37,7 @@
         tools:layout="@layout/activity_detail_photographer" />
     <activity
         android:id="@+id/formPhotographerActivity"
-        android:name="com.capstone.fotokui.ui.FormPhotographerActivity"
+        android:name="com.capstone.fotokui.ui.formphotographer.FormPhotographerActivity"
         android:label="activity_form_photographer"
         tools:layout="@layout/activity_form_photographer" />
     <include app:graph="@navigation/navigation_auth" />

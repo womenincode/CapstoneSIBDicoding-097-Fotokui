@@ -45,23 +45,21 @@
 
     <string name="favorite_photographer_title">Fotografer Favorit</string>
 
+    <string name="home_header_welcome_message_format">Hello, %s</string>
     <string name="photographer_experience_format">%s %s</string>
+
     <string name="logout">Keluar</string>
     <string name="email_empty">Email tidak boleh kosong!</string>
     <string name="password_empty">Password tidak boleh kosong!</string>
     <string name="title_activity_auth">AuthActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="name_empty">Nama tidak boleh kosong!</string>
     <string name="logout_title">Apakah anda yakin ingin keluar?</string>
     <string name="user">Pengguna</string>
     <string name="photographer">Fotografer</string>
     <string name="role_empty">Tipe pengguna tidak boleh kosong!</string>
+    <string name="year">Tahun</string>
+    <string name="month">Bulan</string>
+    <string name="your_number_phone">No. Telepon</string>
 </resources>

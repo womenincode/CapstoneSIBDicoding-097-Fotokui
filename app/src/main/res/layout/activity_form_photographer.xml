@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.FormPhotographerActivity">
+    tools:context=".ui.formphotographer.FormPhotographerActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -48,7 +48,7 @@
                     android:id="@+id/tv_title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="22dp"
                     android:layout_marginHorizontal="14dp"
                     android:text="@string/photographer_service"
                     android:textSize="16sp"
@@ -71,7 +71,7 @@
                     android:id="@+id/til_experience"
                     style="@style/Widget.FotoKui.TextInputLayout.OutlinedBox"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="16dp"
                     app:hintEnabled="false"
@@ -101,17 +101,19 @@
                     android:id="@+id/til_year_or_month"
                     style="@style/Widget.FotoKui.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:minWidth="100dp"
+                    android:layout_height="55dp"
+                    android:minWidth="115dp"
                     android:layout_marginEnd="24dp"
                     app:hintEnabled="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_photographer_experience">
 
                     <AutoCompleteTextView
+                        android:id="@+id/actv_month_or_year"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:inputType="none"
+                        android:text="@string/year"
                         tools:ignore="LabelFor" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -121,16 +123,17 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
                     android:text="@string/your_price"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tv_photographer_experience"
                     app:layout_constraintTop_toBottomOf="@+id/til_experience" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_price"
                     style="@style/Widget.FotoKui.TextInputLayout.OutlinedBox"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="55dp"
                     app:hintEnabled="false"
                     app:prefixText="Rp"
                     app:layout_constraintEnd_toEndOf="@+id/til_year_or_month"
@@ -138,6 +141,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_photographer_price">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_price"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/zero"
@@ -150,16 +154,16 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:layout_marginStart="32dp"
                     android:text="@string/your_promotion"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_photographer_price"
+                    app:layout_constraintStart_toStartOf="@+id/tv_photographer_price"
                     app:layout_constraintTop_toBottomOf="@+id/til_price" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_promotion"
                     style="@style/Widget.FotoKui.TextInputLayout.OutlinedBox"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="55dp"
                     app:hintEnabled="false"
                     app:suffixText="%"
                     app:layout_constraintEnd_toEndOf="@+id/til_year_or_month"
@@ -167,9 +171,38 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_photographer_promotion">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_promotion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/zero"
+                        android:inputType="number|numberDecimal" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tv_photographer_no_hp"
+                    style="@style/cardSubtitleStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/your_number_phone"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_photographer_promotion"
+                    app:layout_constraintStart_toStartOf="@+id/tv_photographer_promotion"
+                    app:layout_constraintTop_toBottomOf="@+id/til_promotion" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_no_hp"
+                    style="@style/Widget.FotoKui.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="55dp"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="@+id/til_year_or_month"
+                    app:layout_constraintStart_toStartOf="@+id/til_experience"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_photographer_no_hp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_no_hp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:inputType="number|numberDecimal" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -180,8 +213,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:text="@string/your_description"
-                    app:layout_constraintStart_toStartOf="@+id/tv_photographer_price"
-                    app:layout_constraintTop_toBottomOf="@+id/til_promotion" />
+                    app:layout_constraintEnd_toEndOf="@+id/tv_photographer_no_hp"
+                    app:layout_constraintStart_toStartOf="@+id/tv_photographer_no_hp"
+                    app:layout_constraintTop_toBottomOf="@+id/til_no_hp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_description"
@@ -194,11 +228,12 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_photographer_description">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:minHeight="114dp"
                         android:gravity="start"
-                        android:inputType="text" />
+                        android:inputType="textImeMultiLine" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -210,11 +245,11 @@
             android:layout_width="0dp"
             android:layout_height="55dp"
             android:layout_marginStart="25dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
             android:text="@string/cancel"
             android:textAllCaps="false"
-            android:textSize="18sp"
+            android:textSize="14sp"
             app:strokeColor="@color/primary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -226,12 +261,12 @@
             android:layout_width="0dp"
             android:layout_height="55dp"
             android:layout_marginBottom="16dp"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="8dp"
             android:layout_marginEnd="25dp"
             android:padding="8dp"
             android:text="@string/save"
             android:textAllCaps="false"
-            android:textSize="18sp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btn_cancel"
