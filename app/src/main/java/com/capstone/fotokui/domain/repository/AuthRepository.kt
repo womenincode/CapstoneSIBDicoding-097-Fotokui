@@ -2,12 +2,15 @@ package com.capstone.fotokui.domain.repository
 
 import com.capstone.fotokui.domain.Response
 import com.capstone.fotokui.domain.Role
+import com.capstone.fotokui.domain.User
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.flow.Flow
 
 interface AuthRepository {
 
-    val currentUser: FirebaseUser?
+    val firebaseUser: FirebaseUser?
+
+    val currentUser: Flow<User>
 
     fun login(
         email: String,

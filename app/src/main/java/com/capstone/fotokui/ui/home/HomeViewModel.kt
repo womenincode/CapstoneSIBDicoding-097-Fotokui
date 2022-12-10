@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.capstone.fotokui.domain.repository.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -19,9 +20,9 @@ class HomeViewModel @Inject constructor(
 
     fun getCurrentUser() {
         viewModelScope.launch {
-            _homeScreenUiState.value = authRepository.currentUser?.let {
-                HomeScreenUiState(
-                    user = it
+            authRepository.currentUser.collectLatest { user ->
+                _homeScreenUiState.value = HomeScreenUiState(
+                    user = user
                 )
             }
         }

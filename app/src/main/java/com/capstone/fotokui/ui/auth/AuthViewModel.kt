@@ -24,7 +24,7 @@ class AuthViewModel @Inject constructor(
     private val _registerLiveData = MutableLiveData<Response<FirebaseUser>?>(null)
     val registerLiveData: LiveData<Response<FirebaseUser>?> = _registerLiveData
 
-    val currentUser get() =  authRepository.currentUser
+    val currentUser get() =  authRepository.firebaseUser
 
     fun login(email:String, password: String) {
         viewModelScope.launch {

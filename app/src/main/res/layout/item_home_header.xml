@@ -6,7 +6,7 @@
     <data>
         <variable
             name="user"
-            type="com.google.firebase.auth.FirebaseUser" />
+            type="com.capstone.fotokui.domain.User" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +23,7 @@
             android:layout_marginTop="44dp"
             android:layout_marginEnd="16dp"
             android:scaleType="centerCrop"
-            app:imageUrl="@{user.photoUrl.toString()}"
+            app:imageUrl="@{user.photo}"
             app:placeholder="@{@drawable/ic_profile_placeholder}"
             app:error="@{@drawable/ic_profile_error}"
             app:layout_constraintTop_toTopOf="parent"
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:layout_marginStart="16dp"
-            app:setupWelcomeMessage="@{user.displayName}"
+            app:setupWelcomeMessage="@{user.name}"
             app:layout_constraintEnd_toStartOf="@+id/iv_user_photo"
             app:layout_constraintTop_toTopOf="@id/iv_user_photo"
             app:layout_constraintStart_toStartOf="parent"

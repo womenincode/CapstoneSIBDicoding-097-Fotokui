@@ -1,9 +1,9 @@
 package com.capstone.fotokui.ui.home
 
 import com.capstone.fotokui.domain.Photographer
-import com.google.firebase.auth.FirebaseUser
+import com.capstone.fotokui.domain.User
 
 data class HomeScreenUiState(
-    val user: FirebaseUser,
+    val user: User,
     val promoPhotographers: List<Photographer> = emptyList()
 )

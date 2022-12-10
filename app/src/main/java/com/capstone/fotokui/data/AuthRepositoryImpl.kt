@@ -1,13 +1,12 @@
 package com.capstone.fotokui.data
 
 import com.capstone.fotokui.domain.Response
+import com.capstone.fotokui.domain.Role
 import com.capstone.fotokui.domain.User
 import com.capstone.fotokui.domain.repository.AuthRepository
-import com.capstone.fotokui.domain.Role
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.userProfileChangeRequest
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.flow.Flow
@@ -21,7 +20,23 @@ class AuthRepositoryImpl @Inject constructor(
     firebaseStorage: FirebaseStorage
 ) : AuthRepository {
 
-    override val currentUser get() = firebaseAuth.currentUser
+    override val firebaseUser get() = firebaseAuth.currentUser
+
+    override val currentUser: Flow<User> = flow {
+
+        val user = firebaseFirestore.collection("users").document(firebaseUser?.uid.toString())
+            .get().await()
+
+        val id = user.getString("id")
+        val photo = user.getString("photo")
+        val name = user.getString("name")
+        val email = user.getString("email")
+        val role = user.getString("role")
+        val lat = user.getDouble("lat")
+        val lon = user.getDouble("lon")
+
+        emit(User(id, photo, name, email, role, lat, lon))
+    }
 
     private val storageReference = firebaseStorage.reference
 
@@ -52,19 +67,18 @@ class AuthRepositoryImpl @Inject constructor(
             }
             result?.user?.updateProfile(profileUpdates)?.await()
             val registeredUser = result.user
-            try {
-                createUser(registeredUser, role)
-                emit(Response.Success(registeredUser!!))
-            } catch (e: Exception) {
-                emit(Response.Failure(e.localizedMessage as String))
+            createUser(registeredUser, role)
+            if (role == Role.PENGGUNA) {
+                firebaseAuth.signOut()
             }
+            emit(Response.Success(registeredUser!!))
         } catch (e: Exception) {
             e.printStackTrace()
             emit(Response.Failure(e.localizedMessage as String))
         }
     }
 
-    private suspend fun createUser(registeredUser: FirebaseUser?, role: Role): DocumentReference {
+    private suspend fun createUser(registeredUser: FirebaseUser?, role: Role) {
         val user = User(
             id = registeredUser?.uid.toString(),
             photo = registeredUser?.photoUrl.toString(),
@@ -72,7 +86,7 @@ class AuthRepositoryImpl @Inject constructor(
             email = registeredUser?.email.toString(),
             role = role.name
         )
-        return firebaseFirestore.collection("users").add(user).await()
+        firebaseFirestore.collection("users").document(user.id.toString()).set(user).await()
     }
 
     override fun logout() {

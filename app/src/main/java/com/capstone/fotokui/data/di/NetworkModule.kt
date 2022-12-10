@@ -24,7 +24,7 @@ class NetworkModule {
     fun providerFirebaseAuth(): FirebaseAuth = Firebase.auth
 
     @Provides
-    fun provideFirebaseFirestore(): FirebaseFirestore = Firebase.firestore
+    fun provideFirebaseFireStore(): FirebaseFirestore = Firebase.firestore
 
     @Provides
     fun provideFirebaseStorage(): FirebaseStorage = Firebase.storage("gs://fotokui.appspot.com/")

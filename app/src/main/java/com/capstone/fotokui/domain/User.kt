@@ -1,11 +1,11 @@
 package com.capstone.fotokui.domain
 
 data class User(
-    val id: String,
-    val photo: String,
-    val name: String,
-    val email: String,
-    val role: String,
+    val id: String? = null,
+    val photo: String? = null,
+    val name: String? = null,
+    val email: String? = null,
+    val role: String? = null,
     val lat: Double? = null,
     val lon: Double? = null
 )
