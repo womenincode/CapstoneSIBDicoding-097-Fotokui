@@ -62,4 +62,10 @@
     <string name="year">Tahun</string>
     <string name="month">Bulan</string>
     <string name="your_number_phone">No. Telepon</string>
+    <string name="experience_empty">Pengalaman tidak boleh kosong!</string>
+    <string name="year_or_month_empty">Tahun/Bulan tidak boleh kosong!</string>
+    <string name="price_empty">Harga tidak boleh kosong!</string>
+    <string name="promotion_empty">Promo tidak boleh kosong!</string>
+    <string name="no_hp_empty">No. telepon tidak boleh kosong!</string>
+    <string name="description_empty">Deskripsi tidak boleh kosong!</string>
 </resources>

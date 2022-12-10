@@ -1,7 +1,9 @@
 package com.capstone.fotokui.data.di
 
 import com.capstone.fotokui.data.AuthRepositoryImpl
+import com.capstone.fotokui.data.PhotographerRepositoryImpl
 import com.capstone.fotokui.domain.repository.AuthRepository
+import com.capstone.fotokui.domain.repository.PhotographerRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -29,4 +31,8 @@ class NetworkModule {
 
     @Provides
     fun provideAuthRepository(implementation: AuthRepositoryImpl) : AuthRepository = implementation
+
+    @Provides
+    fun providePhotographerRepository(implementation: PhotographerRepositoryImpl): PhotographerRepository = implementation
+
 }

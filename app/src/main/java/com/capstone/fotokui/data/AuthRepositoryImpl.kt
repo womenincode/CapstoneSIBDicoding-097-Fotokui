@@ -25,7 +25,7 @@ class AuthRepositoryImpl @Inject constructor(
 
     private val storageReference = firebaseStorage.reference
 
-    override suspend fun login(email: String, password: String): Flow<Response<FirebaseUser>> = flow {
+    override fun login(email: String, password: String): Flow<Response<FirebaseUser>> = flow {
         emit(Response.Loading)
         try {
             val result = firebaseAuth.signInWithEmailAndPassword(email, password).await()
@@ -36,7 +36,7 @@ class AuthRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun register(
+    override fun register(
         name: String,
         email: String,
         role: Role,
@@ -54,10 +54,6 @@ class AuthRepositoryImpl @Inject constructor(
             val registeredUser = result.user
             try {
                 createUser(registeredUser, role)
-                if (role == Role.FOTOGRAFER) {
-                    createPhotographer(registeredUser)
-                }
-                firebaseAuth.signOut()
                 emit(Response.Success(registeredUser!!))
             } catch (e: Exception) {
                 emit(Response.Failure(e.localizedMessage as String))
@@ -77,13 +73,6 @@ class AuthRepositoryImpl @Inject constructor(
             role = role.name
         )
         return firebaseFirestore.collection("users").add(user).await()
-    }
-
-    private suspend fun createPhotographer(registeredUser: FirebaseUser?): DocumentReference {
-        val photographer = mapOf(
-            "id" to registeredUser?.uid
-        )
-        return firebaseFirestore.collection("photographers").add(photographer).await()
     }
 
     override fun logout() {

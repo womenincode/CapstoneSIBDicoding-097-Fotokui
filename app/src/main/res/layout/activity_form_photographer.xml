@@ -80,6 +80,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_photographer_experience">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_experience"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number|numberDecimal"/>
