@@ -23,7 +23,7 @@ class EpoxyFavoritePhotographerController(private val context: Context) : TypedE
             title(title)
         }
         data?.forEach { photographer ->
-            if (photographer.promo > 0) {
+            if (photographer.promo != null && photographer.promo > 0) {
                 photographerPromo {
                     id(photographer.id)
                     photographer(photographer)

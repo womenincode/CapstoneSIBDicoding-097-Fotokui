@@ -191,7 +191,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/til_promotion" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/til_no_hp"
+                    android:id="@+id/til_phone"
                     style="@style/Widget.FotoKui.TextInputLayout.OutlinedBox"
                     android:layout_width="0dp"
                     android:layout_height="55dp"
@@ -201,7 +201,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_photographer_no_hp">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tiet_no_hp"
+                        android:id="@+id/tiet_phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number|numberDecimal" />
@@ -216,7 +216,7 @@
                     android:text="@string/your_description"
                     app:layout_constraintEnd_toEndOf="@+id/tv_photographer_no_hp"
                     app:layout_constraintStart_toStartOf="@+id/tv_photographer_no_hp"
-                    app:layout_constraintTop_toBottomOf="@+id/til_no_hp" />
+                    app:layout_constraintTop_toBottomOf="@+id/til_phone" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_description"
@@ -224,8 +224,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:hintEnabled="false"
-                    app:layout_constraintEnd_toEndOf="@+id/til_year_or_month"
-                    app:layout_constraintStart_toStartOf="@+id/til_experience"
+                    app:layout_constraintEnd_toEndOf="@+id/til_phone"
+                    app:layout_constraintStart_toStartOf="@+id/til_phone"
                     app:layout_constraintTop_toBottomOf="@+id/tv_photographer_description">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -234,7 +234,37 @@
                         android:layout_height="wrap_content"
                         android:minHeight="114dp"
                         android:gravity="start"
-                        android:inputType="textImeMultiLine" />
+                        android:inputType="textMultiLine" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tv_photographer_location"
+                    style="@style/cardSubtitleStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/your_location"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_photographer_description"
+                    app:layout_constraintStart_toStartOf="@+id/tv_photographer_description"
+                    app:layout_constraintTop_toBottomOf="@+id/til_description" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_location"
+                    style="@style/Widget.FotoKui.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="@+id/til_description"
+                    app:layout_constraintStart_toStartOf="@+id/til_description"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_photographer_location">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="114dp"
+                        android:gravity="start"
+                        android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,8 +10,6 @@ import androidx.fragment.app.viewModels
 import com.capstone.fotokui.databinding.FragmentHomeBinding
 import com.capstone.fotokui.ui.auth.AuthActivity
 import com.capstone.fotokui.ui.auth.AuthViewModel
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -49,10 +47,6 @@ class HomeFragment : Fragment() {
         binding.epoxyHome.setController(epoxyHomeController)
 
         observeHomeScreenUiState()
-
-        val firebaseFireStore = Firebase.firestore
-
-        firebaseFireStore.collection("users").document(authViewModel.currentUser?.uid.toString())
     }
 
     private fun observeHomeScreenUiState() {

@@ -8,5 +8,7 @@ interface PhotographerRepository {
 
     fun getPhotographers(): Flow<List<Photographer>>
 
-    suspend fun updatePhotographer(photographer: Photographer): Flow<Response<Photographer>>
+    fun getPhotographer(photographerId: String): Flow<Response<Photographer>>
+
+    suspend fun updatePhotographer(photographer: Photographer): Flow<Response<String>>
 }

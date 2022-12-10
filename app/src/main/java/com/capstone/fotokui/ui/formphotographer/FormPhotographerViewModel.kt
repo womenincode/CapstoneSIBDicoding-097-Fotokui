@@ -17,8 +17,19 @@ class FormPhotographerViewModel @Inject constructor(
     private val formPhotographerRepository: PhotographerRepository
 ) : ViewModel() {
 
+    private val _currentPhotographer = MutableLiveData<Response<Photographer>>()
+    val currentPhotographer: LiveData<Response<Photographer>> get() = _currentPhotographer
+
     private val _updatePhotographerState = MutableLiveData<Response<String>>()
     val updatePhotographerState: LiveData<Response<String>> get() = _updatePhotographerState
+
+    fun getPhotographer(id: String) {
+        viewModelScope.launch {
+            formPhotographerRepository.getPhotographer(id).collectLatest { response ->
+                _currentPhotographer.value = response
+            }
+        }
+    }
 
     fun updatePhotographer(
         id: String,
@@ -29,7 +40,9 @@ class FormPhotographerViewModel @Inject constructor(
         yearOrMonthExperience: String,
         price: Int,
         promo: Float,
+        phone: String,
         description: String,
+        location: String,
         photos: List<String>
     ) {
         viewModelScope.launch {
@@ -42,15 +55,13 @@ class FormPhotographerViewModel @Inject constructor(
                 yearOrMonthExperience = yearOrMonthExperience,
                 price = price,
                 promo = promo,
+                phone = phone,
                 description = description,
+                location = location,
                 photos = photos
             )
             formPhotographerRepository.updatePhotographer(photographer).collectLatest{ response ->
-                when (response) {
-                    is Response.Loading -> _updatePhotographerState.value = Response.Loading
-                    is Response.Success -> _updatePhotographerState.value = Response.Success("Data photographer berhasil di simpan!")
-                    is Response.Failure -> _updatePhotographerState.value = response
-                }
+                _updatePhotographerState.value = response
             }
         }
     }

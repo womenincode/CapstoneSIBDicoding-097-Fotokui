@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.capstone.fotokui.MainActivity
 import com.capstone.fotokui.R
 import com.capstone.fotokui.databinding.ActivityFormPhotographerBinding
+import com.capstone.fotokui.domain.Photographer
 import com.capstone.fotokui.domain.Response
 import com.capstone.fotokui.ui.auth.AuthViewModel
 import com.example.awesomedialog.*
@@ -25,6 +26,11 @@ class FormPhotographerActivity : AppCompatActivity(), View.OnClickListener {
 
     private var currentUser: FirebaseUser? = null
 
+    private val fromType: Int get() {
+        return if (intent.getIntExtra(EXTRA_FROM, FROM_REGISTER) == FROM_REGISTER)
+            FROM_REGISTER else FROM_PROFILE
+    }
+
     private val awesomeDialog get() = AwesomeDialog.build(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +40,11 @@ class FormPhotographerActivity : AppCompatActivity(), View.OnClickListener {
 
         currentUser = authViewModel.currentUser
 
+        if (fromType == FROM_PROFILE) {
+            formPhotographerViewModel.getPhotographer(currentUser?.uid.toString())
+            observeCurrentPhotographer()
+        }
+
         setupRoleAutoCompleteTextView()
         setupListener()
         observeFormPhotographerState()
@@ -41,10 +52,17 @@ class FormPhotographerActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(view: View?) {
         when (view?.id) {
-            R.id.btn_cancel -> navigateToHomeScreen()
+            R.id.btn_cancel -> {
+                if (fromType == FROM_REGISTER) {
+                    navigateToHomeScreen()
+                } else {
+                    onBackPressedDispatcher.onBackPressed()
+                }
+            }
             R.id.btn_save -> updateFormPhotographer()
         }
     }
+
     private fun setupRoleAutoCompleteTextView() {
         val monthOrYear = listOf(getString(R.string.year), getString(R.string.month))
         val adapter = ArrayAdapter(this, R.layout.item_base_auto_complete_textview, monthOrYear)
@@ -52,8 +70,25 @@ class FormPhotographerActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setupListener() {
+        binding.toolbar.setNavigationOnClickListener {
+            if (fromType == FROM_REGISTER) {
+                navigateToHomeScreen()
+            } else {
+                onBackPressedDispatcher.onBackPressed()
+            }
+        }
         arrayOf(binding.btnCancel, binding.btnSave)
             .forEach { button -> button.setOnClickListener(this) }
+    }
+
+    private fun setupFormPhotographer(photographer: Photographer) {
+        binding.tietExperience.setText(photographer.experience.toString())
+        binding.actvMonthOrYear.setText(photographer.yearOrMonthExperience.toString())
+        binding.tietPrice.setText(photographer.price.toString())
+        binding.tietPromotion.setText(photographer.promo.toString())
+        binding.tietPhone.setText(photographer.phone.toString())
+        binding.tietDescription.setText(photographer.description.toString())
+        binding.tietLocation.setText(photographer.location.toString())
     }
 
     private fun observeFormPhotographerState() {
@@ -89,7 +124,36 @@ class FormPhotographerActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    private fun observeCurrentPhotographer() {
+        formPhotographerViewModel.currentPhotographer.observe(this) { response ->
+            when (response) {
+                is Response.Loading -> {
+                    binding.btnCancel.isEnabled = false
+                    binding.btnSave.isEnabled = false
+                }
+                is Response.Success -> {
+                    binding.btnCancel.isEnabled = true
+                    binding.btnSave.isEnabled = true
+                    setupFormPhotographer(response.result)
+                    setupRoleAutoCompleteTextView()
+                }
+                is Response.Failure -> {
+                    binding.btnCancel.isEnabled = true
+                    binding.btnSave.isEnabled = true
+                    awesomeDialog.title("Gagal mendapatkan data")
+                        .body(response.message)
+                        .icon(R.drawable.ic_error)
+                        .onPositive(getString(R.string.ok), buttonBackgroundColor = R.drawable.filled_custom_button) {
+                            awesomeDialog.cancel()
+                        }
+                        .show()
+                }
+            }
+        }
+    }
+
     private fun updateFormPhotographer() {
+
         if (!validateForm()) return
 
         val photographerUid = currentUser?.uid.toString()
@@ -100,7 +164,9 @@ class FormPhotographerActivity : AppCompatActivity(), View.OnClickListener {
         val yearOrMonthExperience = binding.actvMonthOrYear.text.toString()
         val photographerPrice = binding.tietPrice.text.toString().toInt()
         val photographerPromotion = binding.tietPromotion.text.toString().toFloat()
+        val photographerPhone = binding.tietPhone.text.toString()
         val photographerDescription = binding.tietDescription.text.toString()
+        val photographerLocation = binding.tietLocation.text.toString()
         val photographerPhotos = emptyList<String>()
 
         formPhotographerViewModel.updatePhotographer(
@@ -112,7 +178,9 @@ class FormPhotographerActivity : AppCompatActivity(), View.OnClickListener {
             yearOrMonthExperience = yearOrMonthExperience,
             price = photographerPrice,
             promo = photographerPromotion,
+            phone = photographerPhone,
             description = photographerDescription,
+            location = photographerLocation,
             photos = photographerPhotos
         )
     }
@@ -134,21 +202,33 @@ class FormPhotographerActivity : AppCompatActivity(), View.OnClickListener {
             binding.tilPromotion.error = getString(R.string.promotion_empty)
             return false
         }
-        if (binding.tietNoHp.text?.isEmpty() == true) {
-            binding.tilNoHp.error = getString(R.string.no_hp_empty)
+        if (binding.tietPhone.text?.isEmpty() == true) {
+            binding.tilPhone.error = getString(R.string.no_hp_empty)
             return false
         }
         if (binding.tietDescription.text?.isEmpty() == true) {
             binding.tilDescription.error = getString(R.string.description_empty)
             return false
         }
+        if (binding.tietLocation.text?.isEmpty() == true) {
+            binding.tilLocation.error = getString(R.string.location_empty)
+            return false
+        }
         return true
     }
 
     private fun navigateToHomeScreen() {
-        val homeIntent = Intent(this, MainActivity::class.java)
+        val homeIntent = Intent(this, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        }
         startActivity(homeIntent)
         finish()
+    }
+
+    companion object {
+        const val EXTRA_FROM = "extra_type"
+        const val FROM_REGISTER = 0
+        const val FROM_PROFILE = 1
     }
 
 }

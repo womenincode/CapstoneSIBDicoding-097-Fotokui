@@ -21,10 +21,6 @@ object DataDummy {
         }.shuffled()
     }
 
-    fun generatePhotographerPromos(size: Int = 20): List<Photographer> {
-        return generatePhotographers(size).filter { photographer -> photographer.promo > 0 }
-    }
-
     fun generateFavoritePhotographer(size: Int = 20): List<Photographer> {
         return generatePhotographers(size).filter { photographer -> photographer.isFavorite }
     }

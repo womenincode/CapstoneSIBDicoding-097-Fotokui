@@ -2,6 +2,7 @@ package com.capstone.fotokui.utils
 
 import android.graphics.drawable.Drawable
 import android.widget.TextView
+import androidx.annotation.DrawableRes
 import androidx.databinding.BindingAdapter
 import coil.load
 import com.capstone.fotokui.R
@@ -24,9 +25,9 @@ fun loadImages(
 @BindingAdapter("icon")
 fun loadIcon(
     textView: TextView,
-    icon: Drawable?
+    @DrawableRes icon: Int
 ) {
-    textView.setCompoundDrawablesRelativeWithIntrinsicBounds(icon, null, null, null)
+    textView.setCompoundDrawablesRelativeWithIntrinsicBounds(icon, 0, 0, 0)
 }
 
 @BindingAdapter("setupWelcomeMessage")

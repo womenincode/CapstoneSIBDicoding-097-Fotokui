@@ -5,21 +5,22 @@ import com.airbnb.epoxy.TypedEpoxyController
 import com.capstone.fotokui.*
 import com.capstone.fotokui.domain.ProfileActivity
 
-class EpoxyProfileController(private val context: Context, private val onProfileActivityListener: OnProfileActivityListener) : TypedEpoxyController<List<ProfileActivity>>() {
+class EpoxyProfileController(private val context: Context, private val onProfileActivityListener: OnProfileActivityListener) : TypedEpoxyController<ProfileScreenUiState>() {
 
-    override fun buildModels(data: List<ProfileActivity>?) {
-        val title = context.getString(R.string.favorite_photographer_title)
+    override fun buildModels(data: ProfileScreenUiState?) {
+        val title = context.getString(R.string.profile)
         toolbar {
             id("toolbar_profile")
             title(title)
         }
         profileHeader {
             id("profile_header")
+            user(data?.user)
         }
         profileActivityTitle {
             id("profile_activity_title")
         }
-        data?.forEach { profileActivity ->
+        data?.activities?.forEach { profileActivity ->
             addProfileActivity(profileActivity, onProfileActivityListener)
         }
     }

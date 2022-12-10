@@ -135,7 +135,9 @@ class RegisterFragment : Fragment(), View.OnClickListener {
     }
 
     private fun navigateToFormPhotographer() {
-        val formPhotographerIntent = Intent(activity, FormPhotographerActivity::class.java)
+        val formPhotographerIntent = Intent(activity, FormPhotographerActivity::class.java).apply {
+            putExtra(FormPhotographerActivity.EXTRA_FROM, FormPhotographerActivity.FROM_REGISTER)
+        }
         startActivity(formPhotographerIntent)
         activity?.finish()
     }

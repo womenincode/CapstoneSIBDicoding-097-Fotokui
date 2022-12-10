@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -20,10 +21,13 @@
             android:layout_marginTop="12dp"
             android:layout_marginStart="32dp"
             android:scaleType="centerCrop"
+            app:imageUrl="@{user.photo}"
+            app:placeholder="@{@drawable/ic_profile_placeholder}"
+            app:error="@{@drawable/ic_profile_error}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:src="@drawable/dummy_user" />
+            tools:src="@tools:sample/avatars" />
 
         <TextView
             style="@style/subtitleStyle"
@@ -32,10 +36,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="13dp"
             android:layout_marginEnd="32dp"
+            android:text="@{user.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_profile"
             app:layout_constraintTop_toTopOf="@+id/iv_profile"
-            android:text="Amita Putry Prasasti" />
+            tools:text="Amita Putry Prasasti" />
 
         <TextView
             style="@style/smallTextStyle"
@@ -43,10 +48,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
+            android:text="@{user.email}"
             app:layout_constraintEnd_toEndOf="@id/tv_user_name"
             app:layout_constraintStart_toStartOf="@+id/tv_user_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_user_name"
-            android:text="amitaputri55@gmail.com" />
+            tools:text="amitaputri55@gmail.com" />
 
         <TextView
             style="@style/smallTextStyle"
@@ -56,13 +62,12 @@
             android:textColor="?attr/colorOnSurface"
             android:layout_marginStart="-5dp"
             android:gravity="center_vertical"
+            android:text="@{user.location ?? @string/location_error}"
             app:layout_constraintEnd_toEndOf="@id/tv_user_email"
             app:layout_constraintStart_toStartOf="@+id/tv_user_email"
             app:layout_constraintTop_toBottomOf="@+id/tv_user_email"
             app:drawableStartCompat="@drawable/ic_location"
-            android:text="Purwokerto Kulon, Banyumas" />
-
-
+            tools:text="Purwokerto Kulon, Banyumas" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

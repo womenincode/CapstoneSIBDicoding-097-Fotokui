@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.capstone.fotokui.R
@@ -13,6 +12,7 @@ import com.capstone.fotokui.databinding.FragmentProfileBinding
 import com.capstone.fotokui.domain.ProfileActivity
 import com.capstone.fotokui.ui.auth.AuthActivity
 import com.capstone.fotokui.ui.auth.AuthViewModel
+import com.capstone.fotokui.ui.formphotographer.FormPhotographerActivity
 import com.example.awesomedialog.*
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,6 +25,7 @@ class ProfileFragment : Fragment(), EpoxyProfileController.OnProfileActivityList
     private lateinit var epoxyProfileController: EpoxyProfileController
 
     private val authViewModel: AuthViewModel by viewModels()
+    private val profileViewModel: ProfileViewModel by viewModels()
 
     private val awesomeDialog get() = AwesomeDialog.build(requireActivity())
 
@@ -39,16 +40,27 @@ class ProfileFragment : Fragment(), EpoxyProfileController.OnProfileActivityList
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        profileViewModel.getProfileScreenUiState()
+
         epoxyProfileController = EpoxyProfileController(requireContext(), this)
 
         binding.epoxyProfile.setController(epoxyProfileController)
 
-        epoxyProfileController.setData(profileActivities())
+        observeProfileScreenUiState()
     }
 
     override fun onClick(profileActivity: ProfileActivity) {
         when (profileActivity.title) {
-            getString(R.string.logout) -> showDialogLogout()
+            R.string.edit_service -> navigateToFormPhotographer()
+            R.string.edit_profile -> {}
+            R.string.help -> {}
+            R.string.logout -> showDialogLogout()
+        }
+    }
+
+    private fun observeProfileScreenUiState() {
+        profileViewModel.profileScreenUiState.observe(viewLifecycleOwner) { profileScreenUiState ->
+            epoxyProfileController.setData(profileScreenUiState)
         }
     }
 
@@ -70,17 +82,11 @@ class ProfileFragment : Fragment(), EpoxyProfileController.OnProfileActivityList
             }
     }
 
-    private fun profileActivities(): List<ProfileActivity> {
-        val profileActivities = ArrayList<ProfileActivity>()
-        profileActivities.add(ProfileActivity(
-            ResourcesCompat.getDrawable(resources, R.drawable.ic_help, null),
-            getString(R.string.help)
-        ))
-        profileActivities.add(ProfileActivity(
-            ResourcesCompat.getDrawable(resources, R.drawable.ic_logout, null),
-            getString(R.string.logout)
-        ))
-        return profileActivities
+    private fun navigateToFormPhotographer() {
+        val formPhotographerIntent = Intent(activity, FormPhotographerActivity::class.java).apply {
+            putExtra(FormPhotographerActivity.EXTRA_FROM, FormPhotographerActivity.FROM_PROFILE)
+        }
+        startActivity(formPhotographerIntent)
     }
 
     private fun navigateToAuthScreen() {

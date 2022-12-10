@@ -31,11 +31,12 @@ class AuthRepositoryImpl @Inject constructor(
         val photo = user.getString("photo")
         val name = user.getString("name")
         val email = user.getString("email")
+        val location = user.getString("location")
         val role = user.getString("role")
         val lat = user.getDouble("lat")
         val lon = user.getDouble("lon")
 
-        emit(User(id, photo, name, email, role, lat, lon))
+        emit(User(id, photo, name, email, location, role, lat, lon))
     }
 
     private val storageReference = firebaseStorage.reference
