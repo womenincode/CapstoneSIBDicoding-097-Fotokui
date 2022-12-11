@@ -62,14 +62,14 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
                 showDialogEditProfile(
                     R.string.cancel_edit_profile_title,
                     R.string.cancel_edit_profile_body
-                ) { updateProfile() }
+                ) { onBackPressedDispatcher.onBackPressed() }
             }
             R.id.btn_save -> {
                 if (!validateForm()) return
                 showDialogEditProfile(
                     R.string.save_edit_profile_title,
                     R.string.save_edit_profile_body
-                ) { onBackPressedDispatcher.onBackPressed() }
+                ) { updateProfile() }
             }
         }
     }

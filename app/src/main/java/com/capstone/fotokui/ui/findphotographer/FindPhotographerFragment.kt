@@ -5,13 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.capstone.fotokui.databinding.FragmentFindPhotographerBinding
-import com.capstone.fotokui.utils.DataDummy
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FindPhotographerFragment : Fragment() {
 
     private var _binding: FragmentFindPhotographerBinding? = null
     private val binding get() = _binding!!
+
+    private val findPhotographerViewModel: FindPhotographerViewModel by viewModels()
 
     private lateinit var epoxyFindPhotographerController: EpoxyFindPhotographerController
 
@@ -26,11 +30,21 @@ class FindPhotographerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (savedInstanceState == null) {
+            findPhotographerViewModel.getFindPhotographerScreenUiState()
+        }
+
         epoxyFindPhotographerController = EpoxyFindPhotographerController(requireContext())
 
         binding.epoxyFindPhotographer.setController(epoxyFindPhotographerController)
 
-        epoxyFindPhotographerController.setData(DataDummy.generatePhotographers(30))
+        observeFindPhotograherScreenUiState()
+    }
+
+    private fun observeFindPhotograherScreenUiState() {
+        findPhotographerViewModel.findPhotographerScreenUiState.observe(viewLifecycleOwner) { findPhotographerScreenUiState ->
+            epoxyFindPhotographerController.setData(findPhotographerScreenUiState)
+        }
     }
 
     override fun onDestroyView() {

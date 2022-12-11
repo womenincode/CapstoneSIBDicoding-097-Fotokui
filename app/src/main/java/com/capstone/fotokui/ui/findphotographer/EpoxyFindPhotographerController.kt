@@ -6,8 +6,8 @@ import com.airbnb.epoxy.TypedEpoxyController
 import com.capstone.fotokui.*
 import com.capstone.fotokui.domain.Photographer
 
-class EpoxyFindPhotographerController(private val context: Context) : TypedEpoxyController<List<Photographer>>() {
-    override fun buildModels(data: List<Photographer>?) {
+class EpoxyFindPhotographerController(private val context: Context) : TypedEpoxyController<FindPhotographerScreenUiState>() {
+    override fun buildModels(data: FindPhotographerScreenUiState?) {
         toolbar {
             id("toolbar_find_photographer")
             title("Temukan Fotografer")
@@ -21,7 +21,7 @@ class EpoxyFindPhotographerController(private val context: Context) : TypedEpoxy
             id("nearby_photographer_title")
             title(title)
         }
-        data?.forEach { photographer ->
+        data?.nearbyPhotographers?.forEach { photographer ->
             if (photographer.promo != null && photographer.promo > 0) {
                 photographerPromo {
                     id(photographer.id)
