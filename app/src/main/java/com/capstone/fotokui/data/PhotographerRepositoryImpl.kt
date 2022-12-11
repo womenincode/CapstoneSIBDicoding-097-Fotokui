@@ -109,6 +109,61 @@ class PhotographerRepositoryImpl @Inject constructor(
         }
     }
 
+    override fun searchPhotographers(query: String, photographers: List<Photographer>): Flow<Response<List<Photographer>>> = flow {
+        emit(Response.Loading)
+        try {
+//            val photographersSnapshot = firebaseFirestore.collection("photographers")
+//                .orderBy("name")
+//                .startAt(query)
+//                .endAt(query)
+//                .limit(20)
+//                .get()
+//                .await()
+//
+//            val photographers = photographersSnapshot.map { photographerSnapshot ->
+//
+//                val photographerId = photographerSnapshot.getString("id")
+//                val photographerPhoto = photographerSnapshot.getString("photo")
+//                val photographerName = photographerSnapshot.getString("name")
+//                val photographerEmail = photographerSnapshot.getString("email")
+//                val photographerExperience = photographerSnapshot.get("experience", Float::class.java)
+//                val photographerYearOrMonthExperience = photographerSnapshot.getString("yearOrMonthExperience")
+//                val photographerPrice = photographerSnapshot.get("price", Int::class.java)
+//                val photographerPromo = photographerSnapshot.get("promo", Float::class.java)
+//                val photographerPhone = photographerSnapshot.getString("phone")
+//                val photographerDescription = photographerSnapshot.getString("description")
+//                val photographerLocation = photographerSnapshot.getString("location")
+//                val photographerPhotos= (photographerSnapshot.get("photos") as List<*>).map { it.toString() }
+//                val photographerLat = photographerSnapshot.getDouble("lat")
+//                val photographerLon = photographerSnapshot.getDouble("lon")
+//
+//                Photographer(
+//                    id = photographerId,
+//                    photo = photographerPhoto,
+//                    name = photographerName,
+//                    email = photographerEmail,
+//                    experience = photographerExperience,
+//                    yearOrMonthExperience = photographerYearOrMonthExperience,
+//                    price = photographerPrice,
+//                    promo = photographerPromo,
+//                    phone = photographerPhone,
+//                    description = photographerDescription,
+//                    location = photographerLocation,
+//                    photos = photographerPhotos,
+//                    lat = photographerLat,
+//                    lon = photographerLon
+//                )
+
+//            }
+            val searchedPhotographers = photographers.filter { photographer ->
+                photographer.name?.contains(query, true) == true
+            }
+            emit(Response.Success(searchedPhotographers))
+        } catch (exception: Exception) {
+            emit(Response.Failure(exception.localizedMessage as String))
+        }
+    }
+
     override fun getPhotographers(promotionPhotographers: Boolean): Flow<Response<List<Photographer>>> = flow {
         emit(Response.Loading)
         try {

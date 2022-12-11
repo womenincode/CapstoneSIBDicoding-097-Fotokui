@@ -33,13 +33,13 @@
     <string name="register">Daftar</string>
     <string name="not_have_account">Belum memiliki akun ?</string>
     <string name="home_header_description">Temukan fotografer fovorit anda</string>
-    <string name="find_your_location">Temukan lokasi anda</string>
+    <string name="find_your_location">Temukan fotografer didekat anda</string>
     <string name="nearby">Terdekat</string>
     <string name="promotion">Promo</string>
     <string name="help">Bantuan</string>
     <string name="promo_today">PROMO HARI INI</string>
     <string name="see_other">Lainnya</string>
-    <string name="search_from_maps">Cari melalui maps</string>
+    <string name="search_from_maps">Cari fotografer</string>
     <string name="nearby_photographer">FOTOGRAFER TERDEKAT</string>
     <string name="favorite_photographer">FOTOGRAFER FAVORIT</string>
 

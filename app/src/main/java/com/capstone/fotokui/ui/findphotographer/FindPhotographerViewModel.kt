@@ -32,4 +32,20 @@ class FindPhotographerViewModel @Inject constructor(
         }
     }
 
+    fun searchPhotographer(query: String) {
+        viewModelScope.launch {
+            photographerRepository.searchPhotographers(
+                query,
+                _findPhotographerScreenUiState.value?.nearbyPhotographers ?: emptyList()
+            ).collectLatest { response ->
+                if (response is Response.Success) {
+                    _findPhotographerScreenUiState.value = FindPhotographerScreenUiState(
+                        nearbyPhotographers = response.result
+                    )
+
+                }
+            }
+        }
+    }
+
 }

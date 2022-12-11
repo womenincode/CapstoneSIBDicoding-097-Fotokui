@@ -1,7 +1,6 @@
 package com.capstone.fotokui.ui.favoritephotographer
 
 import android.content.Context
-import android.view.View
 import com.airbnb.epoxy.TypedEpoxyController
 import com.capstone.fotokui.*
 import com.capstone.fotokui.domain.Photographer
@@ -16,7 +15,6 @@ class EpoxyFavoritePhotographerController(private val context: Context, private 
         }
         findPhotographerSearchInput {
             id("search_favorite_photographer")
-            onclick(View.OnClickListener {  })
         }
         val title = context.getString(R.string.favorite_photographer)
         findPhotographerNearbyPhotographerTitle {

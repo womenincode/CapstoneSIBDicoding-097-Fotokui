@@ -1,22 +1,25 @@
 package com.capstone.fotokui.ui.findphotographer
 
 import android.content.Context
-import android.view.View
+import androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged
 import com.airbnb.epoxy.TypedEpoxyController
 import com.capstone.fotokui.*
 import com.capstone.fotokui.domain.Photographer
 import com.capstone.fotokui.ui.home.EpoxyHomeController
 
-class EpoxyFindPhotographerController(private val context: Context, private val onPhotographerListener: EpoxyHomeController.OnPhotographerListener) : TypedEpoxyController<FindPhotographerScreenUiState>() {
+class EpoxyFindPhotographerController(
+    private val context: Context,
+    private val onPhotographerListener: EpoxyHomeController.OnPhotographerListener,
+    private val onSearchChanged: OnTextChanged
+) : TypedEpoxyController<FindPhotographerScreenUiState>() {
     override fun buildModels(data: FindPhotographerScreenUiState?) {
         toolbar {
             id("toolbar_find_photographer")
             title("Temukan Fotografer")
         }
-        findPhotographerSearchInput {
-            id("search_nearby_photographer")
-            onclick(View.OnClickListener {  })
-        }
+
+        addItemPhotographerSearchInput(onSearchChanged)
+
         val title = context.getString(R.string.nearby_photographer)
         findPhotographerNearbyPhotographerTitle {
             id("nearby_photographer_title")
@@ -24,6 +27,13 @@ class EpoxyFindPhotographerController(private val context: Context, private val 
         }
         data?.nearbyPhotographers?.forEach { photographer ->
             addItemPhotographer(photographer, onPhotographerListener)
+        }
+    }
+
+    private fun addItemPhotographerSearchInput(onSearchChanged: OnTextChanged) {
+        findPhotographerSearchInput {
+            id("search_nearby_photographer")
+            onTextChanged(onSearchChanged)
         }
     }
 

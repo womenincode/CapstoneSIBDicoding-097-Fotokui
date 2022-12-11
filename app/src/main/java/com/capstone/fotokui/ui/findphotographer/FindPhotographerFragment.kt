@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.databinding.adapters.TextViewBindingAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.capstone.fotokui.databinding.FragmentFindPhotographerBinding
@@ -38,14 +39,20 @@ class FindPhotographerFragment : Fragment(), EpoxyHomeController.OnPhotographerL
             findPhotographerViewModel.getFindPhotographerScreenUiState()
         }
 
-        epoxyFindPhotographerController = EpoxyFindPhotographerController(requireContext(), this)
+        epoxyFindPhotographerController = EpoxyFindPhotographerController(requireContext(), this) { text, _, _, count ->
+            if (count > 0) {
+                findPhotographerViewModel.searchPhotographer(text.toString())
+            } else {
+                findPhotographerViewModel.getFindPhotographerScreenUiState()
+            }
+        }
 
         binding.epoxyFindPhotographer.setController(epoxyFindPhotographerController)
 
-        observeFindPhotograherScreenUiState()
+        observeFindPhotographerScreenUiState()
     }
 
-    private fun observeFindPhotograherScreenUiState() {
+    private fun observeFindPhotographerScreenUiState() {
         findPhotographerViewModel.findPhotographerScreenUiState.observe(viewLifecycleOwner) { findPhotographerScreenUiState ->
             epoxyFindPhotographerController.setData(findPhotographerScreenUiState)
         }
