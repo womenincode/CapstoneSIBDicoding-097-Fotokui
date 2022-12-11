@@ -52,6 +52,7 @@ class HomeFragment : Fragment() {
     private fun observeHomeScreenUiState() {
         homeViewModel.homeScreenUiState.observe(viewLifecycleOwner) { homeScreenUiState ->
             epoxyHomeController.setData(homeScreenUiState)
+            homeViewModel.getPromotionPhotographers()
         }
     }
 

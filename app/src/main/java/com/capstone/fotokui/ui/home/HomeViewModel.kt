@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.capstone.fotokui.domain.Response
 import com.capstone.fotokui.domain.repository.AuthRepository
+import com.capstone.fotokui.domain.repository.PhotographerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -13,7 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val authRepository: AuthRepository
+    private val authRepository: AuthRepository,
+    private val photographerRepository: PhotographerRepository
 ) : ViewModel() {
 
     private val _homeScreenUiState = MutableLiveData<HomeScreenUiState>()
@@ -25,6 +27,18 @@ class HomeViewModel @Inject constructor(
                 if (response is Response.Success) {
                     _homeScreenUiState.value = HomeScreenUiState(
                         user = response.result
+                    )
+                }
+            }
+        }
+    }
+
+    fun getPromotionPhotographers() {
+        viewModelScope.launch {
+            photographerRepository.getPhotographers(promotionPhotographers = true).collectLatest { response ->
+                if (response is Response.Success) {
+                    _homeScreenUiState.value = _homeScreenUiState.value?.copy(
+                        promoPhotographers = response.result
                     )
                 }
             }

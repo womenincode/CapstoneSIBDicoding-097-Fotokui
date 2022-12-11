@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface PhotographerRepository {
 
-    fun getPhotographers(): Flow<List<Photographer>>
+    fun getPhotographers(promotionPhotographers: Boolean): Flow<Response<List<Photographer>>>
 
     fun getPhotographer(photographerId: String): Flow<Response<Photographer>>
 

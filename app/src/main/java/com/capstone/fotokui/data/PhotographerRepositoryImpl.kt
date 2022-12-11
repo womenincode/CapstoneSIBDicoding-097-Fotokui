@@ -60,7 +60,61 @@ class PhotographerRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getPhotographers(): Flow<List<Photographer>> = flow {  }
+    override fun getPhotographers(promotionPhotographers: Boolean): Flow<Response<List<Photographer>>> = flow {
+        emit(Response.Loading)
+        try {
+            val photographersSnapshot = if (promotionPhotographers) {
+                firebaseFirestore.collection("photographers")
+                    .whereGreaterThan("promo", 0)
+                    .limit(20)
+                    .get()
+                    .await()
+            } else {
+                firebaseFirestore.collection("photographers")
+                    .limit(20)
+                    .get()
+                    .await()
+            }
+
+            val photographers = photographersSnapshot.map { photographerSnapshot ->
+
+                val photographerId = photographerSnapshot.getString("id")
+                val photographerPhoto = photographerSnapshot.getString("photo")
+                val photographerName = photographerSnapshot.getString("name")
+                val photographerEmail = photographerSnapshot.getString("email")
+                val photographerExperience = photographerSnapshot.get("experience", Float::class.java)
+                val photographerYearOrMonthExperience = photographerSnapshot.getString("yearOrMonthExperience")
+                val photographerPrice = photographerSnapshot.get("price", Int::class.java)
+                val photographerPromo = photographerSnapshot.get("promo", Float::class.java)
+                val photographerPhone = photographerSnapshot.getString("phone")
+                val photographerDescription = photographerSnapshot.getString("description")
+                val photographerLocation = photographerSnapshot.getString("location")
+                val photographerPhotos= (photographerSnapshot.get("photos") as List<*>).map { it.toString() }
+                val photographerLat = photographerSnapshot.getDouble("lat")
+                val photographerLon = photographerSnapshot.getDouble("lon")
+
+                Photographer(
+                    id = photographerId,
+                    photo = photographerPhoto,
+                    name = photographerName,
+                    email = photographerEmail,
+                    experience = photographerExperience,
+                    yearOrMonthExperience = photographerYearOrMonthExperience,
+                    price = photographerPrice,
+                    promo = photographerPromo,
+                    phone = photographerPhone,
+                    description = photographerDescription,
+                    location = photographerLocation,
+                    photos = photographerPhotos,
+                    lat = photographerLat,
+                    lon = photographerLon
+                )
+            }
+            emit(Response.Success(photographers))
+        } catch (exception: Exception) {
+            emit(Response.Failure(exception.localizedMessage as String))
+        }
+    }
 
     override suspend fun updatePhotographer(photographer: Photographer): Flow<Response<String>> = flow {
         emit(Response.Loading)
