@@ -14,6 +14,7 @@ import com.capstone.fotokui.ui.auth.AuthActivity
 import com.capstone.fotokui.ui.auth.AuthViewModel
 import com.capstone.fotokui.ui.editprofile.EditProfileActivity
 import com.capstone.fotokui.ui.formphotographer.FormPhotographerActivity
+import com.capstone.fotokui.ui.help.HelpActivity
 import com.example.awesomedialog.*
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -54,7 +55,7 @@ class ProfileFragment : Fragment(), EpoxyProfileController.OnProfileActivityList
         when (profileActivity.title) {
             R.string.edit_service -> navigateToFormPhotographer()
             R.string.edit_profile -> navigateToEditProfileScreen()
-            R.string.help -> {}
+            R.string.help -> navigateToHelpScreen()
             R.string.logout -> showDialogLogout()
         }
     }
@@ -93,6 +94,11 @@ class ProfileFragment : Fragment(), EpoxyProfileController.OnProfileActivityList
     private fun navigateToEditProfileScreen() {
         val authIntent = Intent(context, EditProfileActivity::class.java)
         startActivity(authIntent)
+    }
+
+    private fun navigateToHelpScreen() {
+        val helpIntent = Intent(context, HelpActivity::class.java)
+        startActivity(helpIntent)
     }
 
     private fun navigateToAuthScreen() {
