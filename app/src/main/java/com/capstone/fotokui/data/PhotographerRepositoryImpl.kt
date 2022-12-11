@@ -3,6 +3,7 @@ package com.capstone.fotokui.data
 import com.capstone.fotokui.domain.Photographer
 import com.capstone.fotokui.domain.Response
 import com.capstone.fotokui.domain.repository.PhotographerRepository
+import com.capstone.fotokui.utils.DataDummy
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.flow.Flow
@@ -43,12 +44,13 @@ class PhotographerRepositoryImpl @Inject constructor(
                 email = photographerEmail,
                 experience = photographerExperience,
                 yearOrMonthExperience = photographerYearOrMonthExperience,
-                price = photographerPrice,
+                price = photographerPrice?.toFloat(),
                 promo = photographerPromo,
                 phone = photographerPhone,
                 description = photographerDescription,
                 location = photographerLocation,
                 photos = photographerPhotos,
+                distance = DataDummy.generateDummyDistance(),
                 lat = photographerLat,
                 lon = photographerLon
             )
@@ -93,12 +95,13 @@ class PhotographerRepositoryImpl @Inject constructor(
                     email = photographerEmail,
                     experience = photographerExperience,
                     yearOrMonthExperience = photographerYearOrMonthExperience,
-                    price = photographerPrice,
+                    price = photographerPrice?.toFloat(),
                     promo = photographerPromo,
                     phone = photographerPhone,
                     description = photographerDescription,
                     location = photographerLocation,
                     photos = photographerPhotos,
+                    distance = DataDummy.generateDummyDistance(),
                     lat = photographerLat,
                     lon = photographerLon
                 )
@@ -204,12 +207,13 @@ class PhotographerRepositoryImpl @Inject constructor(
                     email = photographerEmail,
                     experience = photographerExperience,
                     yearOrMonthExperience = photographerYearOrMonthExperience,
-                    price = photographerPrice,
+                    price = photographerPrice?.toFloat(),
                     promo = photographerPromo,
                     phone = photographerPhone,
                     description = photographerDescription,
                     location = photographerLocation,
                     photos = photographerPhotos,
+                    distance = DataDummy.generateDummyDistance(),
                     lat = photographerLat,
                     lon = photographerLon
                 )

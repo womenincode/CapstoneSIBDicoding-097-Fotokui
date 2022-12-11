@@ -1,6 +1,8 @@
 package com.capstone.fotokui.utils
 
 import com.capstone.fotokui.domain.Photographer
+import java.text.DecimalFormat
+import kotlin.random.Random
 
 object DataDummy {
     fun generatePhotographers(size: Int = 10): List<Photographer> {
@@ -12,7 +14,7 @@ object DataDummy {
                 name = "Layla El Faouly",
                 experience = id.toFloat(),
                 yearOrMonthExperience = if (id % 3 == 0) "Tahun" else "Bulan",
-                price = 50,
+                price = 50F,
                 description= "You can configure your app to draw its content behind the system bars. Together, the status bar and the navigation bar are called the system bars.",
                 photos = emptyList(),
                 isFavorite = id % 4 == 0 || id % 3 == 0,
@@ -23,5 +25,10 @@ object DataDummy {
 
     fun generateFavoritePhotographer(size: Int = 20): List<Photographer> {
         return generatePhotographers(size).filter { photographer -> photographer.isFavorite }
+    }
+
+    fun generateDummyDistance(): String {
+        val randomDistance = Random.nextDouble(from = 0.2, until = 2.4)
+        return DecimalFormat("#.#").format(randomDistance)
     }
 }

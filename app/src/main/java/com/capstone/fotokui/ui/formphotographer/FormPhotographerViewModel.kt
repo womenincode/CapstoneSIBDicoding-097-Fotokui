@@ -53,7 +53,7 @@ class FormPhotographerViewModel @Inject constructor(
                 email = email,
                 experience = experience,
                 yearOrMonthExperience = yearOrMonthExperience,
-                price = price,
+                price = price.toFloat(),
                 promo = promo,
                 phone = phone,
                 description = description,

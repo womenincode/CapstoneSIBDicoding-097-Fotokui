@@ -71,12 +71,13 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
+                    android:text="@{@string/distance_format(photographer.distance)}"
                     android:textSize="12sp"
                     android:textColor="#FF619CF4"
                     app:layout_constraintEnd_toEndOf="@+id/tv_photographer_name"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_photographer_name"
-                    android:text="1.7 km dari anda" />
+                    tools:text="1.7 km dari anda" />
 
                 <TextView
                     android:id="@+id/tv_photographer_discount"
@@ -98,10 +99,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:textColor="?attr/colorPrimary"
+                    android:text="@{@string/price_card_format(photographer.price.toString())}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/tv_photographer_name"
                     app:layout_constraintStart_toEndOf="@+id/tv_photographer_name"
-                    android:text="47.5k/shot" />
+                    tools:text="47.5k/shot" />
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/cardTitleStyle"

@@ -89,4 +89,7 @@
     <string name="ui_problem_description">Jika kamu mengalami kendala tampilan pada aplikasi FotoKui seperti:\n\n1.Tampilan pada aplikasi tidak berubah setelah diperbaharui\n2.Fitur Button chat ke WhatsApp tidak berfungsi\n3.Tarik tidak dapat memuat harga / tidak muncul\n4.Tidak bisa memuat lokasi\n5.Tidak bisa menampilkan maps.\n\nSilakan pastikan konektsi internet dan GPS kamu dalam keadaan aktif dan stabil. Setelah itu, lakukan force close dan clear cache, dan update aplikasi ke versi terbaru.</string>
     <string name="order_problem_title">Tidak bisa melakukan pemesanan</string>
     <string name="order_problem_description">Kami mohon maaf atas ketidaknyamanannya. Apabila kamu tidak bisa melakukan pemesanan dan kamu mengalami notifikasi seperti di bawah ini:\n\n1.Kami menemukan suatu masalah di akunmu\n2.Kamu tidak dapat menggunakan fitur.\n3.Kamu tidak dapat menggunakan akun kamu saat ini.\n\nSIlakan pastikan koneksi internet kamu dalam keadaan stabil. Setelah itu, lakukan force close dan clear cache, dan update aplikasi versi terbaru.\n\nMasih memerlukan bantuan? Silakan kirim pesan atau email ke info@fotokui.com</string>
+    <string name="distance_format">%s km dari anda</string>
+    <string name="price_card_format">%sk/shot</string>
+    <string name="price_card_format_with_rp">Rp %sk/shot</string>
 </resources>

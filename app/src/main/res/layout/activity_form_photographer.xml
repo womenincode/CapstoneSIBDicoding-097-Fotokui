@@ -137,6 +137,7 @@
                     android:layout_height="55dp"
                     app:hintEnabled="false"
                     app:prefixText="Rp"
+                    app:suffixText="K"
                     app:layout_constraintEnd_toEndOf="@+id/til_year_or_month"
                     app:layout_constraintStart_toStartOf="@+id/til_experience"
                     app:layout_constraintTop_toBottomOf="@+id/tv_photographer_price">

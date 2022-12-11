@@ -18,14 +18,14 @@ class HomeViewModel @Inject constructor(
     private val photographerRepository: PhotographerRepository
 ) : ViewModel() {
 
-    private val _homeScreenUiState = MutableLiveData<HomeScreenUiState>()
+    private val _homeScreenUiState = MutableLiveData(HomeScreenUiState())
     val homeScreenUiState: LiveData<HomeScreenUiState> get() = _homeScreenUiState
 
     fun getCurrentUser() {
         viewModelScope.launch {
             authRepository.currentUser.collectLatest { response ->
                 if (response is Response.Success) {
-                    _homeScreenUiState.value = HomeScreenUiState(
+                    _homeScreenUiState.value = _homeScreenUiState.value?.copy(
                         user = response.result
                     )
                 }

@@ -45,6 +45,7 @@ class HomeFragment : Fragment(), EpoxyHomeController.OnPhotographerListener,
 
         if (savedInstanceState == null) {
             homeViewModel.getCurrentUser()
+            homeViewModel.getPromotionPhotographers()
         }
 
         epoxyHomeController = EpoxyHomeController(this, this)
@@ -57,7 +58,6 @@ class HomeFragment : Fragment(), EpoxyHomeController.OnPhotographerListener,
     private fun observeHomeScreenUiState() {
         homeViewModel.homeScreenUiState.observe(viewLifecycleOwner) { homeScreenUiState ->
             epoxyHomeController.setData(homeScreenUiState)
-            homeViewModel.getPromotionPhotographers()
         }
     }
 
