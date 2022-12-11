@@ -44,7 +44,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.DetailPhotographerActivity"
+            android:name=".ui.detailphotographer.DetailPhotographerActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

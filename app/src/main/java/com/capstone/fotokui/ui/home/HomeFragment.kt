@@ -5,15 +5,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.capstone.fotokui.databinding.FragmentHomeBinding
 import com.capstone.fotokui.ui.auth.AuthActivity
 import com.capstone.fotokui.ui.auth.AuthViewModel
+import com.capstone.fotokui.ui.detailphotographer.DetailPhotographerActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), EpoxyHomeController.OnPhotographerListener {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -42,7 +44,7 @@ class HomeFragment : Fragment() {
             homeViewModel.getCurrentUser()
         }
 
-        epoxyHomeController = EpoxyHomeController()
+        epoxyHomeController = EpoxyHomeController(this)
 
         binding.epoxyHome.setController(epoxyHomeController)
 
@@ -65,5 +67,16 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onClick(photographerId: String) {
+        val detailPhotographerIntent = Intent(activity, DetailPhotographerActivity::class.java).apply {
+            putExtra(DetailPhotographerActivity.EXTRA_PHOTOGRAPHER_ID, photographerId)
+        }
+        startActivity(detailPhotographerIntent)
+    }
+
+    override fun onFavoriteClick(id: String) {
+        Toast.makeText(activity, "Ditambahkan ke favorite", Toast.LENGTH_SHORT).show()
     }
 }

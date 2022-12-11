@@ -82,4 +82,5 @@
     <string name="cancel_edit_profile_body">Semua perubahan yang anda lakukan tidak akan tersimpan!</string>
     <string name="save_edit_profile_title">Apakah data sudah benar?</string>
     <string name="save_edit_profile_body">Semua perubahan yang anda lakukan akan tersimpan!</string>
+    <string name="price_format">Rp. %s</string>
 </resources>

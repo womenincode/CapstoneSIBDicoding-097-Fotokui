@@ -32,7 +32,7 @@
         tools:layout="@layout/fragment_profile" />
     <activity
         android:id="@+id/detailPhotographerActivity"
-        android:name="com.capstone.fotokui.ui.DetailPhotographerActivity"
+        android:name="com.capstone.fotokui.ui.detailphotographer.DetailPhotographerActivity"
         android:label="activity_detail_photographer"
         tools:layout="@layout/activity_detail_photographer" />
     <activity

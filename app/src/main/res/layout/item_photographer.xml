@@ -7,6 +7,9 @@
         <variable
             name="photographer"
             type="com.capstone.fotokui.domain.Photographer" />
+        <variable
+            name="onclick"
+            type="com.capstone.fotokui.ui.home.EpoxyHomeController.OnPhotographerListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,6 +39,9 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{() -> onclick.onClick(photographer.id)}"
             app:cardBackgroundColor="#FFF8F8F8"
             app:cardCornerRadius="25dp"
             app:cardElevation="0dp">
@@ -102,6 +108,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:contentDescription="@string/like_this_photographer"
+                    android:padding="8dp"
+                    android:layout_margin="-8dp"
+                    android:onClick="@{() -> onclick.onFavoriteClick(photographer.id)}"
                     android:src="@{photographer.favorite ? @drawable/ic_favorited : @drawable/ic_like}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_photographer_price"

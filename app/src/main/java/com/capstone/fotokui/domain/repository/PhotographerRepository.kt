@@ -10,5 +10,7 @@ interface PhotographerRepository {
 
     fun getPhotographer(photographerId: String): Flow<Response<Photographer>>
 
+    fun getFavoritePhotographers(userId: String): Flow<Response<List<Photographer>>>
+
     suspend fun updatePhotographer(photographer: Photographer): Flow<Response<String>>
 }
