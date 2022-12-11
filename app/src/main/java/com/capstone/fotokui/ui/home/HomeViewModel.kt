@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.capstone.fotokui.domain.Response
 import com.capstone.fotokui.domain.repository.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -20,10 +21,12 @@ class HomeViewModel @Inject constructor(
 
     fun getCurrentUser() {
         viewModelScope.launch {
-            authRepository.currentUser.collectLatest { user ->
-                _homeScreenUiState.value = HomeScreenUiState(
-                    user = user
-                )
+            authRepository.currentUser.collectLatest { response ->
+                if (response is Response.Success) {
+                    _homeScreenUiState.value = HomeScreenUiState(
+                        user = response.result
+                    )
+                }
             }
         }
     }

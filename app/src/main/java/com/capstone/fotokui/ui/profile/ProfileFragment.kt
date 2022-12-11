@@ -12,6 +12,7 @@ import com.capstone.fotokui.databinding.FragmentProfileBinding
 import com.capstone.fotokui.domain.ProfileActivity
 import com.capstone.fotokui.ui.auth.AuthActivity
 import com.capstone.fotokui.ui.auth.AuthViewModel
+import com.capstone.fotokui.ui.editprofile.EditProfileActivity
 import com.capstone.fotokui.ui.formphotographer.FormPhotographerActivity
 import com.example.awesomedialog.*
 import dagger.hilt.android.AndroidEntryPoint
@@ -52,7 +53,7 @@ class ProfileFragment : Fragment(), EpoxyProfileController.OnProfileActivityList
     override fun onClick(profileActivity: ProfileActivity) {
         when (profileActivity.title) {
             R.string.edit_service -> navigateToFormPhotographer()
-            R.string.edit_profile -> {}
+            R.string.edit_profile -> navigateToEditProfileScreen()
             R.string.help -> {}
             R.string.logout -> showDialogLogout()
         }
@@ -87,6 +88,11 @@ class ProfileFragment : Fragment(), EpoxyProfileController.OnProfileActivityList
             putExtra(FormPhotographerActivity.EXTRA_FROM, FormPhotographerActivity.FROM_PROFILE)
         }
         startActivity(formPhotographerIntent)
+    }
+
+    private fun navigateToEditProfileScreen() {
+        val authIntent = Intent(context, EditProfileActivity::class.java)
+        startActivity(authIntent)
     }
 
     private fun navigateToAuthScreen() {

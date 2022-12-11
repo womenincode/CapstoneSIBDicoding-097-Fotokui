@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.editprofile.EditProfileActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:elevation="0dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            style="@style/ThemeOverlay.MaterialComponents.Toolbar.Surface"
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/ic_back"
+            android:padding="16dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            app:titleTextAppearance="@style/titleHeader"
+            app:titleCentered="true"
+            app:title="Profil Anda"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/cardTitleStyle"
+                    android:id="@+id/tv_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginHorizontal="14dp"
+                    android:text="@string/edit_profile"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_photographer_upload_your_profile"
+                    style="@style/cardSubtitleStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginHorizontal="32dp"
+                    android:text="@string/your_profile"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/riv_profile"
+                    android:layout_width="131dp"
+                    android:layout_height="118dp"
+                    android:layout_marginTop="10dp"
+                    app:riv_corner_radius="24dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_profile_not_upload"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_photographer_upload_your_profile"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_photographer_name"
+                    style="@style/cardSubtitleStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginHorizontal="32dp"
+                    android:text="@string/name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/riv_profile" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_price"
+                    style="@style/Widget.FotoKui.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="55dp"
+                    android:layout_marginHorizontal="24dp"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_photographer_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tv_photographer_email"
+                    style="@style/cardSubtitleStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/email"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_photographer_name"
+                    app:layout_constraintStart_toStartOf="@+id/tv_photographer_name"
+                    app:layout_constraintTop_toBottomOf="@+id/til_price" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_email"
+                    style="@style/Widget.FotoKui.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="55dp"
+                    app:boxBackgroundColor="#FFD7D7D7"
+                    app:hintEnabled="false"
+                    android:enabled="true"
+                    app:layout_constraintEnd_toEndOf="@+id/til_price"
+                    app:layout_constraintStart_toStartOf="@+id/til_price"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_photographer_email">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:inputType="textEmailAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tv_photographer_phone"
+                    style="@style/cardSubtitleStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/your_number_phone"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_photographer_email"
+                    app:layout_constraintStart_toStartOf="@+id/tv_photographer_email"
+                    app:layout_constraintTop_toBottomOf="@+id/til_email" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_phone"
+                    style="@style/Widget.FotoKui.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="55dp"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="@+id/til_email"
+                    app:layout_constraintStart_toStartOf="@+id/til_email"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_photographer_phone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="phone" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tv_photographer_location"
+                    style="@style/cardSubtitleStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/your_location"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_photographer_phone"
+                    app:layout_constraintStart_toStartOf="@+id/tv_photographer_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/til_phone" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_location"
+                    style="@style/Widget.FotoKui.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="@+id/til_phone"
+                    app:layout_constraintStart_toStartOf="@+id/til_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_photographer_location">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="114dp"
+                        android:gravity="start"
+                        android:inputType="textMultiLine" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.FotoKui.Button.OutlinedButton"
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/cancel"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            app:strokeColor="@color/primary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_save"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save"
+            style="@style/Widget.FotoKui.Button"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="25dp"
+            android:padding="8dp"
+            android:text="@string/save"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_cancel"
+            app:strokeColor="@color/primary" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

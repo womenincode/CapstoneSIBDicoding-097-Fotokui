@@ -17,7 +17,6 @@ fun loadImages(
 ) {
     circleImageView.load(url) {
         placeholder(placeholder)
-        crossfade(true)
         error(error)
     }
 }

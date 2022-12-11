@@ -73,6 +73,13 @@
     <string name="description_empty">Deskripsi tidak boleh kosong!</string>
 
     <string name="location_error">-</string>
-    <string name="your_location">Masukan Lokasi anda*</string>
+    <string name="your_location">Masukan Alamat anda*</string>
     <string name="location_empty">Lokasi tidak boleh kosong!</string>
+    <string name="your_profile">Upload foto profil anda*</string>
+    <string name="photo_empty">Foto profile belum dipilih!</string>
+    <string name="phone_empty">No telepon tidak boleh kosong!</string>
+    <string name="cancel_edit_profile_title">Apakah anda ingin keluar?</string>
+    <string name="cancel_edit_profile_body">Semua perubahan yang anda lakukan tidak akan tersimpan!</string>
+    <string name="save_edit_profile_title">Apakah data sudah benar?</string>
+    <string name="save_edit_profile_body">Semua perubahan yang anda lakukan akan tersimpan!</string>
 </resources>

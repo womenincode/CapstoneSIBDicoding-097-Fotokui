@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.capstone.fotokui.R
 import com.capstone.fotokui.domain.ProfileActivity
+import com.capstone.fotokui.domain.Response
 import com.capstone.fotokui.domain.Role
 import com.capstone.fotokui.domain.repository.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,11 +24,13 @@ class ProfileViewModel @Inject constructor(
 
     fun getProfileScreenUiState() {
         viewModelScope.launch {
-            authRepository.currentUser.collectLatest { user ->
-                _profileScreenUiState.value = ProfileScreenUiState(
-                    user = user,
-                    activities = userActivities(user.role)
-                )
+            authRepository.currentUser.collectLatest { response ->
+                if (response is Response.Success) {
+                    _profileScreenUiState.value = ProfileScreenUiState(
+                        user = response.result,
+                        activities = userActivities(response.result.role)
+                    )
+                }
             }
         }
     }
