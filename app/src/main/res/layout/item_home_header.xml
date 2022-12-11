@@ -7,6 +7,9 @@
         <variable
             name="user"
             type="com.capstone.fotokui.domain.User" />
+        <variable
+            name="onHomeClick"
+            type="com.capstone.fotokui.ui.home.EpoxyHomeController.OnHomeClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,6 +26,7 @@
             android:layout_marginTop="44dp"
             android:layout_marginEnd="16dp"
             android:scaleType="centerCrop"
+            android:onClick="@{() -> onHomeClick.onProfileClick()}"
             app:imageUrl="@{user.photo}"
             app:placeholder="@{@drawable/ic_profile_placeholder}"
             app:error="@{@drawable/ic_profile_error}"
@@ -76,6 +80,16 @@
                 android:drawableEnd="@drawable/ic_search_location"
                 android:enabled="false" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{() -> onHomeClick.onMapClick()}"
+            app:layout_constraintBottom_toBottomOf="@+id/tie_search"
+            app:layout_constraintEnd_toEndOf="@+id/tie_search"
+            app:layout_constraintStart_toStartOf="@+id/tie_search"
+            app:layout_constraintTop_toTopOf="@+id/tie_search" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
